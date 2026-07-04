@@ -4,7 +4,8 @@
 
 | Resource | Value |
 |----------|-------|
-| Pages URL | https://toptechreviews-asz.pages.dev |
+| Pages URL | https://toptechreviews.org |
+| Custom domain | `toptechreviews.org` + `www.toptechreviews.org` |
 | Pages project | `toptechreviews` |
 | D1 database | `toptechreviews-clicks` (`069f27f4-17d4-464b-8583-37c546a6d4d7`) |
 | Click API | `POST /api/click` (Pages Function → D1 → ReferIQ) |

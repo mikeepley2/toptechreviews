@@ -28,19 +28,21 @@ def oauth_token() -> str:
     return cfg["oauth_token"]
 
 
-def vault_dns_token() -> str | None:
+def resolve_token() -> tuple[str, str]:
     import os
 
     if os.environ.get("TOPTECHREVIEWS_DNS_TOKEN"):
-        return os.environ["TOPTECHREVIEWS_DNS_TOKEN"].strip()
+        return os.environ["TOPTECHREVIEWS_DNS_TOKEN"].strip(), "env"
     sys.path.insert(0, str(VAULT_SCRIPT))
     try:
         from vault_kv_util import read_kv  # noqa: WPS433
 
         data = read_kv("toptechreviews/platform")
-        return data.get("CLOUDFLARE_DNS_API_TOKEN") or None
+        if data.get("CLOUDFLARE_DNS_API_TOKEN"):
+            return data["CLOUDFLARE_DNS_API_TOKEN"], "vault"
     except Exception:
-        return None
+        pass
+    return oauth_token(), "oauth"
 
 
 def cf_request(token: str, method: str, path: str, body: dict | None = None) -> dict:
@@ -72,9 +74,18 @@ def upsert_cname(token: str, name: str, content: str) -> None:
 
 
 def main() -> None:
-    token = vault_dns_token() or oauth_token()
-    source = "vault" if vault_dns_token() else "oauth"
+    token, source = resolve_token()
     print(f"Using {source} token")
+
+    try:
+        cf_request(token, "GET", f"/zones/{ZONE_ID}/dns_records?per_page=1")
+    except RuntimeError as exc:
+        if "403" in str(exc):
+            raise SystemExit(
+                "Token lacks DNS Edit for toptechreviews.org. "
+                "Create a zone token with permission: DNS → Edit, then rerun."
+            ) from exc
+        raise
 
     for name in ("toptechreviews.org", "www.toptechreviews.org"):
         upsert_cname(token, name, TARGET)
