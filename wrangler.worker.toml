@@ -1,6 +1,6 @@
-name = "toptechreviews"
+name = "toptechreviews-click"
+main = "workers/click-tracker.js"
 compatibility_date = "2024-06-01"
-pages_build_output_dir = "dist"
 
 [[d1_databases]]
 binding = "CLICKS"
@@ -10,4 +10,6 @@ database_id = "069f27f4-17d4-464b-8583-37c546a6d4d7"
 [vars]
 REFERIQ_MARKETING_CLICK_URL = "https://referiq.net/api/public/marketing-clicks"
 
-# MARKETING_CLICK_API_KEY — pages secret (wrangler pages secret put)
+# [[routes]]
+# pattern = "toptechreviews.org/api/click*"
+# zone_name = "toptechreviews.org"

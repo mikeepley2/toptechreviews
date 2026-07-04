@@ -4,7 +4,7 @@ Configure in **Settings → Secrets and variables → Actions** for `mikeepley2/
 
 | Secret | Purpose |
 |--------|---------|
-| `CLOUDFLARE_API_TOKEN` | Pages deploy + Worker deploy (Account + Pages Edit + Workers Scripts Edit) |
+| `CLOUDFLARE_API_TOKEN` | Pages deploy + D1 + Workers (**Account-scoped** — zone-only DNS tokens will fail) |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 | `MARKETING_CLICK_API_KEY` | Shared key with ReferIQ `MARKETING_CLICK_API_KEY` (Worker → `/api/public/marketing-clicks`) |
 
