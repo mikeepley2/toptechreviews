@@ -1,5 +1,16 @@
 # GitHub Actions secrets
 
+## Live (2026-07-04)
+
+| Resource | Value |
+|----------|-------|
+| Pages URL | https://toptechreviews-asz.pages.dev |
+| Pages project | `toptechreviews` |
+| D1 database | `toptechreviews-clicks` (`069f27f4-17d4-464b-8583-37c546a6d4d7`) |
+| Click API | `POST /api/click` (Pages Function → D1 → ReferIQ) |
+| Vault | `kv/toptechreviews/platform` |
+| ReferIQ dev vault | `kv/vantyxreferrals/dev` (same `MARKETING_CLICK_API_KEY`) |
+
 Configure in **Settings → Secrets and variables → Actions** for `mikeepley2/toptechreviews`:
 
 | Secret | Purpose |
