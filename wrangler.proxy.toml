@@ -1,0 +1,8 @@
+name = "toptechreviews-proxy"
+main = "workers/pages-proxy.js"
+compatibility_date = "2024-06-01"
+
+routes = [
+  { pattern = "toptechreviews.org/*", zone_name = "toptechreviews.org" },
+  { pattern = "www.toptechreviews.org/*", zone_name = "toptechreviews.org" },
+]
