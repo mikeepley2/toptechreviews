@@ -72,6 +72,7 @@ function buildGuide(def) {
     title: def.title,
     h1: def.h1,
     intro: def.intro,
+    categoryGroup: def.categoryGroup,
     updated: UPDATED,
     ourReviewUrl: def.ourReviewUrl,
     scoreLabels: def.scoreLabels,
@@ -90,6 +91,7 @@ function buildGuide(def) {
 
 const seoGuide = buildGuide({
   sortOrder: 1,
+  categoryGroup: "Marketing & Growth",
   slug: "best-managed-seo-services",
   title: "Best Managed SEO Services (2026) — Rankings, Pricing & Reviews",
   h1: "Best Managed SEO Services & Tools",
@@ -132,8 +134,40 @@ const seoGuide = buildGuide({
 seoGuide.verdict =
   "For most SMBs, ReferIQ Managed SEO Autopilot delivers the best mix of automation and transparent pricing.";
 
+const GROUP_BY_SLUG = {
+  "best-crm-software": "Sales & CRM",
+  "best-email-marketing-platforms": "Marketing & Growth",
+  "best-project-management-tools": "Productivity",
+  "best-cloud-hosting-providers": "Developer & IT",
+  "best-password-managers": "Security & Privacy",
+  "best-vpn-services": "Security & Privacy",
+  "best-video-conferencing-software": "Communication",
+  "best-small-business-accounting-software": "Finance & Accounting",
+  "best-ecommerce-platforms": "Commerce & Retail",
+  "best-help-desk-software": "Customer Support",
+  "best-marketing-automation-platforms": "Marketing & Growth",
+  "best-website-builders": "Web & Design",
+  "best-hr-payroll-software": "HR & People",
+  "best-endpoint-security-software": "Security & Privacy",
+  "best-cloud-backup-services": "Developer & IT",
+  "best-ai-writing-tools": "AI & Automation",
+  "best-social-media-management-tools": "Marketing & Growth",
+  "best-business-voip-providers": "Communication",
+  "best-online-legal-services": "Legal & Compliance",
+  "best-time-tracking-software": "Productivity",
+};
+
 const other = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "other-guides.json"), "utf8"));
-const categories = [seoGuide, ...other.map(buildGuide)].sort((a, b) => a.sortOrder - b.sortOrder);
+const extraPath = path.join(ROOT, "content", "extra-guides.json");
+const extra = fs.existsSync(extraPath)
+  ? JSON.parse(fs.readFileSync(extraPath, "utf8"))
+  : [];
+
+const categories = [
+  seoGuide,
+  ...other.map((g) => buildGuide({ ...g, categoryGroup: g.categoryGroup || GROUP_BY_SLUG[g.slug] })),
+  ...extra.map(buildGuide),
+].sort((a, b) => a.sortOrder - b.sortOrder);
 
 fs.writeFileSync(OUT, JSON.stringify({ categories }, null, 2));
 console.log(`Wrote ${categories.length} categories → ${OUT}`);

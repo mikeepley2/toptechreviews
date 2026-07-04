@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "TopTechReviews.org — independent technology comparison guides",
   "scripts": {
-    "seed": "node scripts/seed-catalog.mjs",
+    "seed": "node scripts/generate-extra-guides.mjs && node scripts/seed-catalog.mjs",
     "build": "node scripts/build.mjs",
     "serve": "npx --yes serve dist -l 8787"
   }

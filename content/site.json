@@ -6,6 +6,10 @@
   "publisher": "TopTechReviews Editorial Team",
   "disclosure": "Providers are listed with outbound links for reader convenience. Rankings reflect our weighted scoring rubric. Some links are affiliate or sponsored where noted. We also publish extended reviews on partner properties when noted.",
   "footerNote": "© 2026 TopTechReviews.org. Informational purposes only. Trademarks belong to their respective owners.",
+  "inquiryUrl": "https://referiq.net/inquire?type=toptechreviews&utm_source=toptechreviews&utm_medium=editorial&utm_campaign=vendor-inquiry",
+  "inquiryLabel": "Submit inquiry",
+  "inquiryHeadline": "Want your product listed or have a question?",
+  "inquiryText": "Vendors can request consideration for future guide updates. Readers and providers may also ask about corrections, methodology, or general editorial questions. Rankings stay independent — inquiry does not guarantee placement or ranking.",
   "trackingEndpoint": "/api/click",
   "referiqMarketingClickUrl": "https://referiq.net/api/public/marketing-clicks",
   "ga4Id": ""
