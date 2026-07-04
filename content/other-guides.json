@@ -1,0 +1,502 @@
+[
+  {
+    "sortOrder": 2,
+    "slug": "best-crm-software",
+    "title": "Best CRM Software (2026)",
+    "h1": "Best CRM Software for Small Business",
+    "intro": "We compared six CRM platforms on pipeline management, automation, reporting, integrations, and total cost for teams under 50 seats.",
+    "scoreLabels": [["c1", "Ease of use"], ["c2", "Automation"], ["c3", "Reporting"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "hubspot",
+      "name": "HubSpot CRM",
+      "tagline": "Free CRM with scalable hubs",
+      "typeLabel": "All-in-one CRM",
+      "price": 0,
+      "url": "https://www.hubspot.com",
+      "summary": "Best starting point for SMBs that may grow into full inbound marketing and sales.",
+      "scores": { "c1": 9.2, "c2": 8.8, "c3": 8.5, "c4": 9.5, "c5": 8.7, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "salesforce", "name": "Salesforce Sales Cloud", "price": 25, "url": "https://www.salesforce.com", "tagline": "Enterprise CRM", "typeLabel": "Enterprise" },
+      { "slug": "pipedrive", "name": "Pipedrive", "price": 14, "url": "https://www.pipedrive.com", "tagline": "Visual pipeline CRM", "typeLabel": "Sales-focused" },
+      { "slug": "zoho-crm", "name": "Zoho CRM", "price": 14, "url": "https://www.zoho.com/crm", "tagline": "Affordable CRM suite", "typeLabel": "Budget" },
+      { "slug": "monday-crm", "name": "Monday CRM", "price": 12, "url": "https://monday.com", "tagline": "Work OS CRM views", "typeLabel": "Flexible" },
+      { "slug": "freshsales", "name": "Freshsales", "price": 15, "url": "https://www.freshworks.com/crm", "tagline": "AI lead scoring", "typeLabel": "SMB sales" }
+    ]
+  },
+  {
+    "sortOrder": 3,
+    "slug": "best-email-marketing-platforms",
+    "title": "Best Email Marketing Platforms (2026)",
+    "h1": "Best Email Marketing Platforms",
+    "intro": "We ranked six platforms for deliverability, automation, templates, ecommerce hooks, and pricing at 10k contacts.",
+    "scoreLabels": [["c1", "Deliverability"], ["c2", "Automation"], ["c3", "Templates"], ["c4", "Ecommerce"], ["c5", "Value"]],
+    "winner": {
+      "slug": "klaviyo",
+      "name": "Klaviyo",
+      "tagline": "Ecommerce email + SMS",
+      "typeLabel": "Ecommerce email",
+      "price": 45,
+      "url": "https://www.klaviyo.com",
+      "summary": "Best for Shopify and ecommerce segmentation, flows, and revenue attribution.",
+      "scores": { "c1": 9.0, "c2": 9.4, "c3": 8.5, "c4": 9.8, "c5": 8.0, "overall": 9.1 }
+    },
+    "rivals": [
+      { "slug": "mailchimp", "name": "Mailchimp", "price": 13, "url": "https://mailchimp.com", "tagline": "General email marketing", "typeLabel": "SMB" },
+      { "slug": "activecampaign", "name": "ActiveCampaign", "price": 29, "url": "https://www.activecampaign.com", "tagline": "Automation-first email", "typeLabel": "Automation" },
+      { "slug": "brevo", "name": "Brevo", "price": 25, "url": "https://www.brevo.com", "tagline": "Email + SMS bundle", "typeLabel": "Multi-channel" },
+      { "slug": "convertkit", "name": "ConvertKit", "price": 25, "url": "https://convertkit.com", "tagline": "Creator newsletters", "typeLabel": "Creators" },
+      { "slug": "constant-contact", "name": "Constant Contact", "price": 12, "url": "https://www.constantcontact.com", "tagline": "Simple local email", "typeLabel": "Local SMB" }
+    ]
+  },
+  {
+    "sortOrder": 4,
+    "slug": "best-project-management-tools",
+    "title": "Best Project Management Tools (2026)",
+    "h1": "Best Project Management Tools",
+    "intro": "We tested six tools for views, collaboration, integrations, mobile apps, and per-seat pricing.",
+    "scoreLabels": [["c1", "Usability"], ["c2", "Views"], ["c3", "Collaboration"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "asana",
+      "name": "Asana",
+      "tagline": "Work management for teams",
+      "typeLabel": "Work management",
+      "price": 10,
+      "url": "https://asana.com",
+      "summary": "Balanced tasks, timelines, and reporting for growing teams.",
+      "scores": { "c1": 9.0, "c2": 9.2, "c3": 8.8, "c4": 9.0, "c5": 8.5, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "monday", "name": "Monday.com", "price": 9, "url": "https://monday.com", "tagline": "Visual work OS", "typeLabel": "Visual PM" },
+      { "slug": "clickup", "name": "ClickUp", "price": 7, "url": "https://clickup.com", "tagline": "All-in-one productivity", "typeLabel": "Feature-rich" },
+      { "slug": "trello", "name": "Trello", "price": 5, "url": "https://trello.com", "tagline": "Kanban boards", "typeLabel": "Simple" },
+      { "slug": "jira", "name": "Jira", "price": 8, "url": "https://www.atlassian.com/software/jira", "tagline": "Agile dev tracking", "typeLabel": "Engineering" },
+      { "slug": "notion", "name": "Notion", "price": 10, "url": "https://www.notion.so", "tagline": "Docs + projects", "typeLabel": "Docs-first" }
+    ]
+  },
+  {
+    "sortOrder": 5,
+    "slug": "best-cloud-hosting-providers",
+    "title": "Best Cloud Hosting Providers (2026)",
+    "h1": "Best Cloud Hosting for Developers & SMBs",
+    "intro": "We compared six hosts on deployment ease, performance, support, managed services, and pricing.",
+    "scoreLabels": [["c1", "Performance"], ["c2", "Ease of use"], ["c3", "Support"], ["c4", "Managed options"], ["c5", "Value"]],
+    "winner": {
+      "slug": "digitalocean",
+      "name": "DigitalOcean",
+      "tagline": "Simple developer cloud",
+      "typeLabel": "Developer cloud",
+      "price": 4,
+      "url": "https://www.digitalocean.com",
+      "summary": "Best balance of simplicity and App Platform managed deploys for builders.",
+      "scores": { "c1": 8.8, "c2": 9.2, "c3": 8.0, "c4": 8.5, "c5": 9.0, "overall": 8.9 }
+    },
+    "rivals": [
+      { "slug": "aws", "name": "AWS", "price": 50, "url": "https://aws.amazon.com", "tagline": "Hyperscale cloud", "typeLabel": "Enterprise" },
+      { "slug": "google-cloud", "name": "Google Cloud", "price": 50, "url": "https://cloud.google.com", "tagline": "GCP services", "typeLabel": "Enterprise" },
+      { "slug": "vultr", "name": "Vultr", "price": 5, "url": "https://www.vultr.com", "tagline": "Low-cost VPS", "typeLabel": "Budget VPS" },
+      { "slug": "cloudways", "name": "Cloudways", "price": 14, "url": "https://www.cloudways.com", "tagline": "Managed WP/PHP", "typeLabel": "Managed WP" },
+      { "slug": "hetzner", "name": "Hetzner", "price": 4, "url": "https://www.hetzner.com", "tagline": "EU value hosting", "typeLabel": "Price-focused" }
+    ]
+  },
+  {
+    "sortOrder": 6,
+    "slug": "best-password-managers",
+    "title": "Best Password Managers (2026)",
+    "h1": "Best Password Managers",
+    "intro": "We ranked six managers for autofill, sharing, breach monitoring, cross-platform support, and team pricing.",
+    "scoreLabels": [["c1", "Security"], ["c2", "Autofill"], ["c3", "Sharing"], ["c4", "Platforms"], ["c5", "Value"]],
+    "winner": {
+      "slug": "1password",
+      "name": "1Password",
+      "tagline": "Premium team vaults",
+      "typeLabel": "Password manager",
+      "price": 3,
+      "url": "https://1password.com",
+      "summary": "Best UX and sharing for families and small business teams.",
+      "scores": { "c1": 9.6, "c2": 9.4, "c3": 9.2, "c4": 9.5, "c5": 8.5, "overall": 9.4 }
+    },
+    "rivals": [
+      { "slug": "bitwarden", "name": "Bitwarden", "price": 0, "url": "https://bitwarden.com", "tagline": "Open-source manager", "typeLabel": "Open source" },
+      { "slug": "dashlane", "name": "Dashlane", "price": 5, "url": "https://www.dashlane.com", "tagline": "VPN bundle options", "typeLabel": "Consumer" },
+      { "slug": "lastpass", "name": "LastPass", "price": 3, "url": "https://www.lastpass.com", "tagline": "Legacy enterprise", "typeLabel": "Enterprise" },
+      { "slug": "keeper", "name": "Keeper", "price": 3, "url": "https://www.keepersecurity.com", "tagline": "Compliance-focused", "typeLabel": "Compliance" },
+      { "slug": "nordpass", "name": "NordPass", "price": 2, "url": "https://nordpass.com", "tagline": "From Nord Security", "typeLabel": "Bundle" }
+    ]
+  },
+  {
+    "sortOrder": 7,
+    "slug": "best-vpn-services",
+    "title": "Best VPN Services (2026)",
+    "h1": "Best VPN Services",
+    "intro": "We tested six VPNs for speed, privacy policy, device limits, and audit history.",
+    "scoreLabels": [["c1", "Speed"], ["c2", "Privacy"], ["c3", "Devices"], ["c4", "Streaming"], ["c5", "Value"]],
+    "winner": {
+      "slug": "mullvad",
+      "name": "Mullvad",
+      "tagline": "Privacy-first VPN",
+      "typeLabel": "Privacy VPN",
+      "price": 5,
+      "url": "https://mullvad.net",
+      "summary": "Anonymous accounts and transparent ownership for privacy-conscious users.",
+      "scores": { "c1": 9.0, "c2": 9.8, "c3": 8.5, "c4": 7.0, "c5": 9.5, "overall": 9.2 }
+    },
+    "rivals": [
+      { "slug": "nordvpn", "name": "NordVPN", "price": 3, "url": "https://nordvpn.com", "tagline": "Mainstream VPN", "typeLabel": "Consumer" },
+      { "slug": "protonvpn", "name": "Proton VPN", "price": 5, "url": "https://protonvpn.com", "tagline": "Swiss privacy VPN", "typeLabel": "Privacy" },
+      { "slug": "expressvpn", "name": "ExpressVPN", "price": 7, "url": "https://www.expressvpn.com", "tagline": "Premium speeds", "typeLabel": "Premium" },
+      { "slug": "surfshark", "name": "Surfshark", "price": 2, "url": "https://surfshark.com", "tagline": "Unlimited devices", "typeLabel": "Families" },
+      { "slug": "pia", "name": "Private Internet Access", "price": 2, "url": "https://www.privateinternetaccess.com", "tagline": "Open-source clients", "typeLabel": "Power users" }
+    ]
+  },
+  {
+    "sortOrder": 8,
+    "slug": "best-video-conferencing-software",
+    "title": "Best Video Conferencing Software (2026)",
+    "h1": "Best Video Conferencing Software",
+    "intro": "We compared six platforms for AV quality, reliability, recording, and per-host pricing.",
+    "scoreLabels": [["c1", "AV quality"], ["c2", "Reliability"], ["c3", "Features"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "zoom",
+      "name": "Zoom Workplace",
+      "tagline": "Video meetings",
+      "typeLabel": "Video meetings",
+      "price": 13,
+      "url": "https://zoom.us",
+      "summary": "Default choice for external client calls and large webinars.",
+      "scores": { "c1": 9.2, "c2": 9.0, "c3": 9.4, "c4": 9.0, "c5": 8.5, "overall": 9.1 }
+    },
+    "rivals": [
+      { "slug": "teams", "name": "Microsoft Teams", "price": 4, "url": "https://www.microsoft.com/microsoft-teams", "tagline": "Office-integrated", "typeLabel": "Microsoft 365" },
+      { "slug": "meet", "name": "Google Meet", "price": 7, "url": "https://meet.google.com", "tagline": "Workspace meetings", "typeLabel": "Google" },
+      { "slug": "webex", "name": "Webex", "price": 12, "url": "https://www.webex.com", "tagline": "Enterprise conferencing", "typeLabel": "Enterprise" },
+      { "slug": "whereby", "name": "Whereby", "price": 10, "url": "https://whereby.com", "tagline": "Browser-based rooms", "typeLabel": "Lightweight" },
+      { "slug": "discord", "name": "Discord", "price": 0, "url": "https://discord.com", "tagline": "Community voice/video", "typeLabel": "Communities" }
+    ]
+  },
+  {
+    "sortOrder": 9,
+    "slug": "best-small-business-accounting-software",
+    "title": "Best Small Business Accounting Software (2026)",
+    "h1": "Best Accounting Software for Small Business",
+    "intro": "We evaluated six tools for invoicing, bank feeds, payroll add-ons, reporting, and accountant access.",
+    "scoreLabels": [["c1", "Bookkeeping"], ["c2", "Invoicing"], ["c3", "Reporting"], ["c4", "Payroll"], ["c5", "Value"]],
+    "winner": {
+      "slug": "quickbooks",
+      "name": "QuickBooks Online",
+      "tagline": "SMB accounting standard",
+      "typeLabel": "Accounting",
+      "price": 30,
+      "url": "https://quickbooks.intuit.com",
+      "summary": "Industry default for US small business bookkeeping and accountant collaboration.",
+      "scores": { "c1": 9.3, "c2": 9.0, "c3": 9.2, "c4": 8.8, "c5": 8.0, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "xero", "name": "Xero", "price": 15, "url": "https://www.xero.com", "tagline": "Cloud accounting", "typeLabel": "International" },
+      { "slug": "freshbooks", "name": "FreshBooks", "price": 19, "url": "https://www.freshbooks.com", "tagline": "Freelancer invoicing", "typeLabel": "Freelancers" },
+      { "slug": "wave", "name": "Wave", "price": 0, "url": "https://www.waveapps.com", "tagline": "Free accounting", "typeLabel": "Free tier" },
+      { "slug": "zoho-books", "name": "Zoho Books", "price": 15, "url": "https://www.zoho.com/books", "tagline": "Zoho suite accounting", "typeLabel": "Zoho stack" },
+      { "slug": "sage", "name": "Sage Accounting", "price": 25, "url": "https://www.sage.com", "tagline": "Established accounting", "typeLabel": "Established SMB" }
+    ]
+  },
+  {
+    "sortOrder": 10,
+    "slug": "best-ecommerce-platforms",
+    "title": "Best Ecommerce Platforms (2026)",
+    "h1": "Best Ecommerce Platforms",
+    "intro": "We ranked six options for storefront quality, payments, apps, SEO, and merchant pricing.",
+    "scoreLabels": [["c1", "Storefront"], ["c2", "Payments"], ["c3", "Apps"], ["c4", "SEO"], ["c5", "Value"]],
+    "winner": {
+      "slug": "shopify",
+      "name": "Shopify",
+      "tagline": "Hosted ecommerce",
+      "typeLabel": "Hosted store",
+      "price": 39,
+      "url": "https://www.shopify.com",
+      "summary": "Fastest path to a professional storefront with apps and payments built in.",
+      "scores": { "c1": 9.5, "c2": 9.3, "c3": 9.6, "c4": 8.8, "c5": 8.5, "overall": 9.3 }
+    },
+    "rivals": [
+      { "slug": "woocommerce", "name": "WooCommerce", "price": 0, "url": "https://woocommerce.com", "tagline": "WordPress ecommerce", "typeLabel": "WordPress" },
+      { "slug": "bigcommerce", "name": "BigCommerce", "price": 39, "url": "https://www.bigcommerce.com", "tagline": "Enterprise hosted", "typeLabel": "Mid-market" },
+      { "slug": "wix", "name": "Wix eCommerce", "price": 27, "url": "https://www.wix.com/ecommerce", "tagline": "Drag-and-drop stores", "typeLabel": "Beginners" },
+      { "slug": "squarespace", "name": "Squarespace Commerce", "price": 27, "url": "https://www.squarespace.com", "tagline": "Design-led shops", "typeLabel": "Design-first" },
+      { "slug": "magento", "name": "Adobe Commerce", "price": 500, "url": "https://business.adobe.com/products/magento/magento-commerce.html", "tagline": "Enterprise Magento", "typeLabel": "Enterprise" }
+    ]
+  },
+  {
+    "sortOrder": 11,
+    "slug": "best-help-desk-software",
+    "title": "Best Help Desk Software (2026)",
+    "h1": "Best Help Desk & Customer Support Software",
+    "intro": "We compared six help desks for ticketing, automation, self-service, and agent UX.",
+    "scoreLabels": [["c1", "Ticketing"], ["c2", "Automation"], ["c3", "Self-service"], ["c4", "Reporting"], ["c5", "Value"]],
+    "winner": {
+      "slug": "freshdesk",
+      "name": "Freshdesk",
+      "tagline": "Cloud help desk",
+      "typeLabel": "Help desk",
+      "price": 15,
+      "url": "https://www.freshworks.com/freshdesk",
+      "summary": "Strong value for SMB support teams with solid automation and KB tools.",
+      "scores": { "c1": 9.0, "c2": 8.8, "c3": 8.5, "c4": 8.7, "c5": 9.2, "overall": 8.9 }
+    },
+    "rivals": [
+      { "slug": "zendesk", "name": "Zendesk", "price": 19, "url": "https://www.zendesk.com", "tagline": "Enterprise support", "typeLabel": "Enterprise" },
+      { "slug": "intercom", "name": "Intercom", "price": 74, "url": "https://www.intercom.com", "tagline": "Messaging support", "typeLabel": "Product-led" },
+      { "slug": "helpscout", "name": "Help Scout", "price": 22, "url": "https://www.helpscout.com", "tagline": "Email-style support", "typeLabel": "Small teams" },
+      { "slug": "zoho-desk", "name": "Zoho Desk", "price": 14, "url": "https://www.zoho.com/desk", "tagline": "Zoho help desk", "typeLabel": "Zoho stack" },
+      { "slug": "hubspot-service", "name": "HubSpot Service Hub", "price": 20, "url": "https://www.hubspot.com/products/service", "tagline": "CRM-native service", "typeLabel": "HubSpot CRM" }
+    ]
+  },
+  {
+    "sortOrder": 12,
+    "slug": "best-marketing-automation-platforms",
+    "title": "Best Marketing Automation Platforms (2026)",
+    "h1": "Best Marketing Automation Platforms",
+    "intro": "We tested six platforms for workflows, CRM sync, lead scoring, and implementation time.",
+    "scoreLabels": [["c1", "Workflows"], ["c2", "CRM sync"], ["c3", "Scoring"], ["c4", "Analytics"], ["c5", "Value"]],
+    "winner": {
+      "slug": "activecampaign",
+      "name": "ActiveCampaign",
+      "tagline": "Automation platform",
+      "typeLabel": "Marketing automation",
+      "price": 29,
+      "url": "https://www.activecampaign.com",
+      "summary": "Best automation depth for SMB budgets without enterprise MAP complexity.",
+      "scores": { "c1": 9.2, "c2": 8.8, "c3": 9.0, "c4": 8.5, "c5": 9.0, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "hubspot-marketing", "name": "HubSpot Marketing Hub", "price": 20, "url": "https://www.hubspot.com", "tagline": "Inbound automation", "typeLabel": "Inbound" },
+      { "slug": "marketo", "name": "Marketo", "price": 895, "url": "https://business.adobe.com/products/marketo/marketo.html", "tagline": "Enterprise MAP", "typeLabel": "Enterprise" },
+      { "slug": "pardot", "name": "Pardot", "price": 1250, "url": "https://www.salesforce.com/products/marketing-cloud/pardot", "tagline": "Salesforce B2B MAP", "typeLabel": "Salesforce" },
+      { "slug": "mailchimp-auto", "name": "Mailchimp Automation", "price": 13, "url": "https://mailchimp.com", "tagline": "Email automation", "typeLabel": "Email-first" },
+      { "slug": "customerio", "name": "Customer.io", "price": 100, "url": "https://customer.io", "tagline": "Behavioral messaging", "typeLabel": "Product events" }
+    ]
+  },
+  {
+    "sortOrder": 13,
+    "slug": "best-website-builders",
+    "title": "Best Website Builders (2026)",
+    "h1": "Best Website Builders",
+    "intro": "We ranked six builders for templates, editor UX, mobile output, SEO basics, and ecommerce add-ons.",
+    "scoreLabels": [["c1", "Templates"], ["c2", "Editor UX"], ["c3", "Mobile"], ["c4", "SEO basics"], ["c5", "Value"]],
+    "winner": {
+      "slug": "squarespace",
+      "name": "Squarespace",
+      "tagline": "Design-led builder",
+      "typeLabel": "Website builder",
+      "price": 16,
+      "url": "https://www.squarespace.com",
+      "summary": "Polished templates with minimal setup for portfolios and small business sites.",
+      "scores": { "c1": 9.4, "c2": 9.0, "c3": 9.2, "c4": 8.5, "c5": 8.0, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "wix", "name": "Wix", "price": 17, "url": "https://www.wix.com", "tagline": "Flexible drag-and-drop", "typeLabel": "Flexibility" },
+      { "slug": "webflow", "name": "Webflow", "price": 14, "url": "https://webflow.com", "tagline": "Designer-grade CMS", "typeLabel": "Designers" },
+      { "slug": "wordpress-com", "name": "WordPress.com", "price": 4, "url": "https://wordpress.com", "tagline": "Hosted WordPress", "typeLabel": "Bloggers" },
+      { "slug": "godaddy", "name": "GoDaddy Website Builder", "price": 10, "url": "https://www.godaddy.com/websites/website-builder", "tagline": "Domain bundle builder", "typeLabel": "Domains" },
+      { "slug": "framer", "name": "Framer", "price": 5, "url": "https://www.framer.com", "tagline": "Modern landing pages", "typeLabel": "Startups" }
+    ]
+  },
+  {
+    "sortOrder": 14,
+    "slug": "best-hr-payroll-software",
+    "title": "Best HR & Payroll Software (2026)",
+    "h1": "Best HR & Payroll Software for SMBs",
+    "intro": "We compared six platforms for payroll accuracy, benefits, onboarding, compliance, and contractor support.",
+    "scoreLabels": [["c1", "Payroll"], ["c2", "Benefits"], ["c3", "Onboarding"], ["c4", "Compliance"], ["c5", "Value"]],
+    "winner": {
+      "slug": "gusto",
+      "name": "Gusto",
+      "tagline": "SMB payroll + HR",
+      "typeLabel": "Payroll & HR",
+      "price": 40,
+      "url": "https://gusto.com",
+      "summary": "Easiest payroll onboarding for US small businesses with benefits add-ons.",
+      "scores": { "c1": 9.3, "c2": 8.8, "c3": 9.0, "c4": 9.2, "c5": 8.8, "overall": 9.1 }
+    },
+    "rivals": [
+      { "slug": "rippling", "name": "Rippling", "price": 8, "url": "https://www.rippling.com", "tagline": "Unified HR + IT", "typeLabel": "Unified ops" },
+      { "slug": "adp", "name": "ADP Run", "price": 59, "url": "https://www.adp.com", "tagline": "Legacy payroll", "typeLabel": "Traditional" },
+      { "slug": "paychex", "name": "Paychex", "price": 39, "url": "https://www.paychex.com", "tagline": "Full-service payroll", "typeLabel": "Full-service" },
+      { "slug": "deel", "name": "Deel", "price": 49, "url": "https://www.deel.com", "tagline": "Global contractors", "typeLabel": "Global teams" },
+      { "slug": "bamboohr", "name": "BambooHR", "price": 6, "url": "https://www.bamboohr.com", "tagline": "HRIS without payroll", "typeLabel": "HRIS" }
+    ]
+  },
+  {
+    "sortOrder": 15,
+    "slug": "best-endpoint-security-software",
+    "title": "Best Endpoint Security Software (2026)",
+    "h1": "Best Endpoint Security for Business",
+    "intro": "We evaluated six products for detection rates, managed response, deployment friction, and SMB pricing.",
+    "scoreLabels": [["c1", "Detection"], ["c2", "Management"], ["c3", "Response"], ["c4", "Deployment"], ["c5", "Value"]],
+    "winner": {
+      "slug": "crowdstrike",
+      "name": "CrowdStrike Falcon Go",
+      "tagline": "Next-gen endpoint AV",
+      "typeLabel": "Endpoint security",
+      "price": 8,
+      "url": "https://www.crowdstrike.com",
+      "summary": "Top-tier detection with SMB-friendly entry tiers.",
+      "scores": { "c1": 9.5, "c2": 9.0, "c3": 9.2, "c4": 8.5, "c5": 7.5, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "defender", "name": "Microsoft Defender for Business", "price": 3, "url": "https://www.microsoft.com/security/business", "tagline": "Microsoft 365 security", "typeLabel": "Microsoft 365" },
+      { "slug": "sentinelone", "name": "SentinelOne", "price": 6, "url": "https://www.sentinelone.com", "tagline": "Autonomous endpoint AI", "typeLabel": "Autonomous" },
+      { "slug": "malwarebytes", "name": "Malwarebytes ThreatDown", "price": 5, "url": "https://www.threatdown.com", "tagline": "SMB-focused AV", "typeLabel": "SMB AV" },
+      { "slug": "bitdefender", "name": "Bitdefender GravityZone", "price": 4, "url": "https://www.bitdefender.com/business", "tagline": "Centralized AV suite", "typeLabel": "MSP-friendly" },
+      { "slug": "sophos", "name": "Sophos Intercept X", "price": 6, "url": "https://www.sophos.com", "tagline": "Firewall + endpoint", "typeLabel": "Bundled" }
+    ]
+  },
+  {
+    "sortOrder": 16,
+    "slug": "best-cloud-backup-services",
+    "title": "Best Cloud Backup Services (2026)",
+    "h1": "Best Cloud Backup Services",
+    "intro": "We ranked six services for restore speed, versioning, coverage, encryption, and storage pricing.",
+    "scoreLabels": [["c1", "Restore speed"], ["c2", "Versioning"], ["c3", "Coverage"], ["c4", "Security"], ["c5", "Value"]],
+    "winner": {
+      "slug": "backblaze",
+      "name": "Backblaze Business Backup",
+      "tagline": "Unlimited endpoint backup",
+      "typeLabel": "Cloud backup",
+      "price": 7,
+      "url": "https://www.backblaze.com/cloud-backup/business.html",
+      "summary": "Simple per-device pricing with reliable restores for laptops and desktops.",
+      "scores": { "c1": 9.0, "c2": 8.8, "c3": 8.5, "c4": 9.0, "c5": 9.5, "overall": 9.1 }
+    },
+    "rivals": [
+      { "slug": "acronis", "name": "Acronis Cyber Protect", "price": 5, "url": "https://www.acronis.com", "tagline": "Backup + cyber protect", "typeLabel": "MSP" },
+      { "slug": "veeam", "name": "Veeam", "price": 10, "url": "https://www.veeam.com", "tagline": "Enterprise backup", "typeLabel": "Enterprise" },
+      { "slug": "idrive", "name": "IDrive Team", "price": 5, "url": "https://www.idrive.com", "tagline": "Multi-device backup", "typeLabel": "Mixed OS" },
+      { "slug": "carbonite", "name": "Carbonite Safe", "price": 24, "url": "https://www.carbonite.com", "tagline": "Consumer-grade business", "typeLabel": "Legacy SMB" },
+      { "slug": "crashplan", "name": "CrashPlan", "price": 5, "url": "https://www.crashplan.com", "tagline": "Continuous backup", "typeLabel": "Creative pros" }
+    ]
+  },
+  {
+    "sortOrder": 17,
+    "slug": "best-ai-writing-tools",
+    "title": "Best AI Writing Tools (2026)",
+    "h1": "Best AI Writing Tools for Business",
+    "intro": "We compared six tools for output quality, templates, team workflows, integrations, and price per seat.",
+    "scoreLabels": [["c1", "Output quality"], ["c2", "Templates"], ["c3", "Teams"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "chatgpt-team",
+      "name": "ChatGPT Team",
+      "tagline": "General AI assistant",
+      "typeLabel": "AI assistant",
+      "price": 25,
+      "url": "https://openai.com/chatgpt/team",
+      "summary": "Flexible assistant for marketing, ops, and research with team workspace controls.",
+      "scores": { "c1": 9.2, "c2": 8.5, "c3": 9.0, "c4": 9.2, "c5": 8.8, "overall": 9.0 }
+    },
+    "rivals": [
+      { "slug": "jasper", "name": "Jasper", "price": 39, "url": "https://www.jasper.ai", "tagline": "Marketing copy AI", "typeLabel": "Marketing" },
+      { "slug": "copy-ai", "name": "Copy.ai", "price": 36, "url": "https://www.copy.ai", "tagline": "GTM workflows", "typeLabel": "GTM" },
+      { "slug": "writesonic", "name": "Writesonic", "price": 16, "url": "https://writesonic.com", "tagline": "SEO + blog drafts", "typeLabel": "SEO content" },
+      { "slug": "notion-ai", "name": "Notion AI", "price": 10, "url": "https://www.notion.so/product/ai", "tagline": "Docs-embedded AI", "typeLabel": "Notion users" },
+      { "slug": "grammarly", "name": "Grammarly Business", "price": 15, "url": "https://www.grammarly.com/business", "tagline": "Editing assistant", "typeLabel": "Editing" }
+    ]
+  },
+  {
+    "sortOrder": 18,
+    "slug": "best-social-media-management-tools",
+    "title": "Best Social Media Management Tools (2026)",
+    "h1": "Best Social Media Management Tools",
+    "intro": "We tested six platforms for scheduling, analytics, inbox tools, channel coverage, and collaboration.",
+    "scoreLabels": [["c1", "Scheduling"], ["c2", "Analytics"], ["c3", "Inbox"], ["c4", "Channels"], ["c5", "Value"]],
+    "winner": {
+      "slug": "buffer",
+      "name": "Buffer",
+      "tagline": "Social scheduling",
+      "typeLabel": "Social scheduling",
+      "price": 6,
+      "url": "https://buffer.com",
+      "summary": "Clean scheduling UX for small teams publishing across major networks.",
+      "scores": { "c1": 9.0, "c2": 8.5, "c3": 7.5, "c4": 8.8, "c5": 9.2, "overall": 8.8 }
+    },
+    "rivals": [
+      { "slug": "hootsuite", "name": "Hootsuite", "price": 99, "url": "https://www.hootsuite.com", "tagline": "Enterprise social suite", "typeLabel": "Enterprise" },
+      { "slug": "sprout", "name": "Sprout Social", "price": 249, "url": "https://sproutsocial.com", "tagline": "Analytics-heavy social", "typeLabel": "Analytics" },
+      { "slug": "later", "name": "Later", "price": 25, "url": "https://later.com", "tagline": "Visual Instagram planning", "typeLabel": "Instagram" },
+      { "slug": "socialbee", "name": "SocialBee", "price": 29, "url": "https://socialbee.com", "tagline": "Category-based queues", "typeLabel": "Queues" },
+      { "slug": "metricool", "name": "Metricool", "price": 18, "url": "https://metricool.com", "tagline": "Affordable analytics", "typeLabel": "Budget" }
+    ]
+  },
+  {
+    "sortOrder": 19,
+    "slug": "best-business-voip-providers",
+    "title": "Best Business VoIP Providers (2026)",
+    "h1": "Best Business VoIP Phone Systems",
+    "intro": "We ranked six VoIP providers for call quality, admin UX, IVR/SMS, CRM integrations, and per-user pricing.",
+    "scoreLabels": [["c1", "Call quality"], ["c2", "Admin UX"], ["c3", "IVR/SMS"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "ringcentral",
+      "name": "RingCentral",
+      "tagline": "Cloud phone system",
+      "typeLabel": "Cloud phone",
+      "price": 20,
+      "url": "https://www.ringcentral.com",
+      "summary": "Reliable UCaaS for distributed teams with strong admin controls.",
+      "scores": { "c1": 9.0, "c2": 8.8, "c3": 9.2, "c4": 9.0, "c5": 8.0, "overall": 8.9 }
+    },
+    "rivals": [
+      { "slug": "nextiva", "name": "Nextiva", "price": 18, "url": "https://www.nextiva.com", "tagline": "SMB-focused VoIP", "typeLabel": "SMB" },
+      { "slug": "dialpad", "name": "Dialpad", "price": 15, "url": "https://www.dialpad.com", "tagline": "AI call summaries", "typeLabel": "AI features" },
+      { "slug": "zoom-phone", "name": "Zoom Phone", "price": 10, "url": "https://zoom.us/zoomphone", "tagline": "Zoom-native telephony", "typeLabel": "Zoom users" },
+      { "slug": "openphone", "name": "OpenPhone", "price": 15, "url": "https://www.openphone.com", "tagline": "Modern startup phone", "typeLabel": "Startups" },
+      { "slug": "grasshopper", "name": "Grasshopper", "price": 14, "url": "https://grasshopper.com", "tagline": "Virtual numbers", "typeLabel": "Solopreneurs" }
+    ]
+  },
+  {
+    "sortOrder": 20,
+    "slug": "best-online-legal-services",
+    "title": "Best Online Legal Services (2026)",
+    "h1": "Best Online Legal Services & LLC Formation",
+    "intro": "We compared six services for LLC formation clarity, speed, attorney access, and upsell transparency.",
+    "scoreLabels": [["c1", "Ease"], ["c2", "Speed"], ["c3", "Attorney access"], ["c4", "Transparency"], ["c5", "Value"]],
+    "winner": {
+      "slug": "zenbusiness",
+      "name": "ZenBusiness",
+      "tagline": "LLC formation",
+      "typeLabel": "LLC formation",
+      "price": 0,
+      "url": "https://www.zenbusiness.com",
+      "summary": "Straightforward LLC packages with compliance reminders for new founders.",
+      "scores": { "c1": 9.0, "c2": 9.2, "c3": 7.5, "c4": 8.8, "c5": 9.0, "overall": 8.9 }
+    },
+    "rivals": [
+      { "slug": "legalzoom", "name": "LegalZoom", "price": 0, "url": "https://www.legalzoom.com", "tagline": "Brand-name legal docs", "typeLabel": "Brand recognition" },
+      { "slug": "northwest", "name": "Northwest Registered Agent", "price": 39, "url": "https://www.northwestregisteredagent.com", "tagline": "Registered agent focus", "typeLabel": "RA service" },
+      { "slug": "rocket-lawyer", "name": "Rocket Lawyer", "price": 40, "url": "https://www.rocketlawyer.com", "tagline": "Subscription legal docs", "typeLabel": "Subscription" },
+      { "slug": "incfile", "name": "Incfile", "price": 0, "url": "https://www.incfile.com", "tagline": "Low-cost formation", "typeLabel": "Budget" },
+      { "slug": "bizee", "name": "Bizee", "price": 0, "url": "https://bizee.com", "tagline": "Fast filing bundles", "typeLabel": "Fast filing" }
+    ]
+  },
+  {
+    "sortOrder": 21,
+    "slug": "best-time-tracking-software",
+    "title": "Best Time Tracking Software (2026)",
+    "h1": "Best Time Tracking Software",
+    "intro": "We evaluated six apps for capture UX, reporting, invoicing hooks, integrations, and privacy controls.",
+    "scoreLabels": [["c1", "Capture UX"], ["c2", "Reporting"], ["c3", "Invoicing"], ["c4", "Integrations"], ["c5", "Value"]],
+    "winner": {
+      "slug": "toggl",
+      "name": "Toggl Track",
+      "tagline": "Time tracking",
+      "typeLabel": "Time tracking",
+      "price": 9,
+      "url": "https://toggl.com/track",
+      "summary": "Frictionless timers with strong reports for agencies and consultants.",
+      "scores": { "c1": 9.4, "c2": 9.0, "c3": 8.5, "c4": 9.0, "c5": 9.0, "overall": 9.1 }
+    },
+    "rivals": [
+      { "slug": "harvest", "name": "Harvest", "price": 11, "url": "https://www.getharvest.com", "tagline": "Time + invoicing", "typeLabel": "Invoicing" },
+      { "slug": "clockify", "name": "Clockify", "price": 0, "url": "https://clockify.me", "tagline": "Free tier tracking", "typeLabel": "Free tier" },
+      { "slug": "rescuetime", "name": "RescueTime", "price": 6, "url": "https://www.rescuetime.com", "tagline": "Automatic productivity", "typeLabel": "Productivity" },
+      { "slug": "timely", "name": "Timely", "price": 9, "url": "https://timelyapp.com", "tagline": "AI time capture", "typeLabel": "Automatic" },
+      { "slug": "hubstaff", "name": "Hubstaff", "price": 7, "url": "https://hubstaff.com", "tagline": "Field team tracking", "typeLabel": "Field teams" }
+    ]
+  }
+]

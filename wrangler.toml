@@ -1,0 +1,16 @@
+name = "toptechreviews-click"
+main = "workers/click-tracker.js"
+compatibility_date = "2024-06-01"
+
+# Create: wrangler d1 create toptechreviews-clicks
+# Then replace database_id below and run: wrangler d1 execute toptechreviews-clicks --file=workers/schema.sql
+[[d1_databases]]
+binding = "CLICKS"
+database_name = "toptechreviews-clicks"
+database_id = "REPLACE_AFTER_D1_CREATE"
+
+[vars]
+REFERIQ_MARKETING_CLICK_URL = "https://referiq.net/api/public/marketing-clicks"
+
+# Set via: wrangler secret put MARKETING_CLICK_API_KEY
+# Must match ReferIQ MARKETING_CLICK_API_KEY env var

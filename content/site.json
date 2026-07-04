@@ -1,0 +1,12 @@
+{
+  "name": "TopTechReviews.org",
+  "url": "https://toptechreviews.org",
+  "tagline": "Independent technology research & buyer guides",
+  "description": "Side-by-side comparisons of software, platforms, and services — ranked with disclosed methodology and real outbound links.",
+  "publisher": "TopTechReviews Editorial Team",
+  "disclosure": "Providers are listed with outbound links for reader convenience. Rankings reflect our weighted scoring rubric. Some links are affiliate or sponsored where noted. We also publish extended reviews on partner properties when noted.",
+  "footerNote": "© 2026 TopTechReviews.org. Informational purposes only. Trademarks belong to their respective owners.",
+  "trackingEndpoint": "/api/click",
+  "referiqMarketingClickUrl": "https://referiq.net/api/public/marketing-clicks",
+  "ga4Id": ""
+}
