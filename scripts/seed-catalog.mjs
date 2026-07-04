@@ -7,6 +7,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "content", "catalog.json");
 const UPDATED = "2026-07-04";
+const FLAGSHIP_DIR = path.join(ROOT, "content", "flagship");
+
+function loadFlagshipGuides() {
+  if (!fs.existsSync(FLAGSHIP_DIR)) return [];
+  return fs
+    .readdirSync(FLAGSHIP_DIR)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => JSON.parse(fs.readFileSync(path.join(FLAGSHIP_DIR, f), "utf8")));
+}
 
 function entry(base) {
   return {
@@ -89,7 +98,12 @@ function buildGuide(def) {
   };
 }
 
-const seoGuide = buildGuide({
+const flagshipGuides = loadFlagshipGuides();
+const flagshipSlugs = new Set(flagshipGuides.map((g) => g.slug));
+
+const seoGuide =
+  flagshipGuides.find((g) => g.slug === "best-managed-seo-services") ??
+  buildGuide({
   sortOrder: 1,
   categoryGroup: "Marketing & Growth",
   slug: "best-managed-seo-services",
@@ -97,7 +111,6 @@ const seoGuide = buildGuide({
   h1: "Best Managed SEO Services & Tools",
   intro:
     "Our editorial team spent six weeks comparing managed SEO platforms, agency retainers, and DIY suites — ranked for businesses that want SEO executed, not another dashboard.",
-  ourReviewUrl: "https://referiq.net/reviews/best-managed-seo-services",
   scoreLabels: [
     ["c1", "Automation"],
     ["c2", "Value"],
@@ -131,8 +144,10 @@ const seoGuide = buildGuide({
   ],
 });
 
-seoGuide.verdict =
-  "For most SMBs, ReferIQ Managed SEO Autopilot delivers the best mix of automation and transparent pricing.";
+if (!flagshipSlugs.has("best-managed-seo-services")) {
+  seoGuide.verdict =
+    "For most SMBs, ReferIQ Managed SEO Autopilot delivers the best mix of automation and transparent pricing.";
+}
 
 const GROUP_BY_SLUG = {
   "best-crm-software": "Sales & CRM",
@@ -159,14 +174,22 @@ const GROUP_BY_SLUG = {
 
 const other = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "other-guides.json"), "utf8"));
 const extraPath = path.join(ROOT, "content", "extra-guides.json");
+const extra2Path = path.join(ROOT, "content", "extra-guides-2.json");
 const extra = fs.existsSync(extraPath)
   ? JSON.parse(fs.readFileSync(extraPath, "utf8"))
+  : [];
+const extra2 = fs.existsSync(extra2Path)
+  ? JSON.parse(fs.readFileSync(extra2Path, "utf8"))
   : [];
 
 const categories = [
   seoGuide,
-  ...other.map((g) => buildGuide({ ...g, categoryGroup: g.categoryGroup || GROUP_BY_SLUG[g.slug] })),
-  ...extra.map(buildGuide),
+  ...other
+    .filter((g) => !flagshipSlugs.has(g.slug))
+    .map((g) => buildGuide({ ...g, categoryGroup: g.categoryGroup || GROUP_BY_SLUG[g.slug] })),
+  ...extra.filter((g) => !flagshipSlugs.has(g.slug)).map(buildGuide),
+  ...extra2.filter((g) => !flagshipSlugs.has(g.slug)).map(buildGuide),
+  ...flagshipGuides.filter((g) => g.slug !== "best-managed-seo-services"),
 ].sort((a, b) => a.sortOrder - b.sortOrder);
 
 fs.writeFileSync(OUT, JSON.stringify({ categories }, null, 2));
