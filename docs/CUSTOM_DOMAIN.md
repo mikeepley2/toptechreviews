@@ -6,8 +6,8 @@
 |------|-------|
 | Cloudflare zone | Active (`toptechreviews.org`) |
 | Pages project | `toptechreviews` → https://toptechreviews-asz.pages.dev |
-| Custom domains (Pages) | `toptechreviews.org`, `www.toptechreviews.org` (pending CNAME) |
-| Proxy worker | `toptechreviews-proxy` on `toptechreviews.org/*` (fallback) |
+| Custom domains (Pages) | **Active** — `toptechreviews.org`, `www.toptechreviews.org` |
+| Proxy worker | Removed (Pages custom domain serves traffic directly) |
 
 ## Finish DNS (one-time)
 

@@ -9,10 +9,12 @@ Static editorial site at **toptechreviews.org** publishing “top 10”-style te
 ```
 content/
   site.json           # site metadata + tracking endpoint
+  flagship/           # hand-authored guides (full entries, scores, FAQ)
   other-guides.json   # 20 non-ReferIQ categories (edit here)
+  extra-guides.json   # bulk-generated categories (100+)
   catalog.json        # generated — do not hand-edit
 scripts/
-  seed-catalog.mjs    # SEO guide inline + other-guides → catalog.json
+  seed-catalog.mjs    # flagship + other-guides + extra → catalog.json
   build.mjs           # catalog → dist/ static HTML
 assets/
   styles.css          # editorial theme (ReferIQ comparison style)
@@ -31,21 +33,55 @@ npm run build
 npm run serve                   # localhost:8787
 ```
 
-## Categories (21)
+## How to add or update a review
 
-1. **Managed SEO** — ReferIQ #1, `ourReviewUrl` → referiq.net review page
-2. CRM · 3. Email marketing · 4. Project management · 5. Cloud hosting
-6. Password managers · 7. VPN · 8. Video conferencing · 9. Accounting
-10. Ecommerce · 11. Help desk · 12. Marketing automation · 13. Website builders
-14. HR/payroll · 15. Endpoint security · 16. Cloud backup · 17. AI writing
-18. Social media management · 19. Business VoIP · 20. Online legal · 21. Time tracking
+### Flagship guides (full editorial control)
 
-To add a category: append to `content/other-guides.json`, run seed + build.
+For high-value comparisons (e.g. managed SEO), add or edit JSON under **`content/flagship/`**:
+
+```
+content/flagship/managed-seo-services.json
+```
+
+Include the full category object: `slug`, `h1`, `intro`, `entries[]` with scores/pros/cons/review, `faq`, `methodology`, `verdict`. Flagship files **replace** auto-generated stubs with the same `slug`.
+
+Then:
+
+```bash
+npm run seed && npm run build
+```
+
+### Standard categories (template + rivals)
+
+Append a stub to **`content/other-guides.json`** (or **`content/extra-guides.json`** for bulk):
+
+- `slug`, `h1`, `intro`, `winner`, `rivals[]` — `seed-catalog.mjs` auto-generates scores and copy via `buildGuide()`.
+
+### Two-site strategy (ReferIQ + TopTechReviews)
+
+| Site | Role |
+|------|------|
+| **toptechreviews.org** | Canonical public comparison hub (independent editorial brand) |
+| **referiq.net** | Product CTAs, managed SEO product, SiteRevive intake |
+
+The managed SEO comparison lives at:
+
+`https://toptechreviews.org/reviews/best-managed-seo-services/`
+
+ReferIQ `/reviews/best-managed-seo-services` redirects there (avoid duplicate content).
+
+## Categories (121+)
+
+1. **Managed SEO** — ReferIQ #1 (flagship JSON, 8 providers)
+2–21. CRM, email marketing, project management, … (see `other-guides.json`)
+22+. Bulk categories from `extra-guides.json`
+
+To add a category: edit the appropriate JSON, run `npm run seed && npm run build`.
 
 ## ReferIQ integration
 
 - SEO winner CTA: `referiq.net/inquire?type=managed_seo&utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo`
-- Extended review link on SEO page only: `https://referiq.net/reviews/best-managed-seo-services`
+- Do **not** duplicate the full comparison on referiq.net — canonical URL is TopTechReviews.
 
 ## Click tracking
 

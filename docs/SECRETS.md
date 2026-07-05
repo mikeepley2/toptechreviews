@@ -16,7 +16,7 @@ Configure in **Settings → Secrets and variables → Actions** for `mikeepley2/
 
 | Secret | Purpose |
 |--------|---------|
-| `CLOUDFLARE_API_TOKEN` | Pages deploy + D1 + Workers (**Account-scoped** — zone-only DNS tokens will fail) |
+| `CLOUDFLARE_API_TOKEN` | **Account-scoped** API token with at minimum: **Account → Cloudflare Pages → Edit**, **Account → Account Settings → Read**, **User → User Details → Read**. Zone-only DNS tokens will fail CI deploy with `Authentication error [code: 10000]`. |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 | `MARKETING_CLICK_API_KEY` | Shared key with ReferIQ `MARKETING_CLICK_API_KEY` (Worker → `/api/public/marketing-clicks`) |
 
