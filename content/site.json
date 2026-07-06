@@ -14,9 +14,9 @@
   "referiqMarketingClickUrl": "https://referiq.net/api/public/marketing-clicks",
   "ga4Id": "",
   "ads": {
-    "enabled": false,
+    "enabled": true,
     "provider": "adsense",
-    "adsenseClient": "",
+    "adsenseClient": "ca-pub-4211604245906988",
     "carbonServe": "",
     "carbonPlacement": "",
     "customHtml": "",
