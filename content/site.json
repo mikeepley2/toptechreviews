@@ -4,7 +4,7 @@
   "tagline": "Independent technology research & buyer guides",
   "description": "Side-by-side comparisons of software, platforms, and services — ranked with disclosed methodology and real outbound links.",
   "publisher": "TopTechReviews Editorial Team",
-  "disclosure": "Providers are listed with outbound links for reader convenience. Rankings reflect our weighted scoring rubric. Some links are affiliate or sponsored where noted. We also publish extended reviews on partner properties when noted.",
+  "disclosure": "Rankings reflect our weighted scoring rubric and are not pay-to-play. Outbound \"Visit\" links may be affiliate links — we may earn a commission if you sign up through them, at no extra cost to you. Sponsored banners and display ads are labeled separately and do not affect scores. See our Affiliate Disclosure for details.",
   "footerNote": "© 2026 TopTechReviews.org. Informational purposes only. Trademarks belong to their respective owners.",
   "inquiryUrl": "https://referiq.net/inquire?type=toptechreviews&utm_source=toptechreviews&utm_medium=editorial&utm_campaign=vendor-inquiry",
   "inquiryLabel": "Submit inquiry",
@@ -12,5 +12,21 @@
   "inquiryText": "Vendors can request consideration for future guide updates. Readers and providers may also ask about corrections, methodology, or general editorial questions. Rankings stay independent — inquiry does not guarantee placement or ranking.",
   "trackingEndpoint": "/api/click",
   "referiqMarketingClickUrl": "https://referiq.net/api/public/marketing-clicks",
-  "ga4Id": ""
+  "ga4Id": "",
+  "ads": {
+    "enabled": false,
+    "provider": "adsense",
+    "adsenseClient": "",
+    "carbonServe": "",
+    "carbonPlacement": "",
+    "customHtml": "",
+    "excludeSlugs": ["best-managed-seo-services"],
+    "requireConsent": true,
+    "slots": {
+      "homeAfterStats": true,
+      "reviewAfterHero": true,
+      "reviewMidContent": true,
+      "reviewBeforeVerdict": false
+    }
+  }
 }

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS clicks (
   referrer TEXT NOT NULL DEFAULT '',
   user_agent TEXT NOT NULL DEFAULT '',
   ip TEXT NOT NULL DEFAULT '',
+  affiliate_network TEXT NOT NULL DEFAULT '',
   received_at TEXT NOT NULL
 );
 

@@ -27,6 +27,8 @@ sequenceDiagram
   "vendor": "referiq",
   "destination": "/go/best-managed-seo-services/referiq",
   "type": "outbound",
+  "affiliate": false,
+  "affiliateNetwork": "",
   "path": "/reviews/best-managed-seo-services/",
   "referrer": "",
   "ts": "2026-07-04T12:00:00.000Z"

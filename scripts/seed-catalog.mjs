@@ -8,6 +8,40 @@ const ROOT = path.join(__dirname, "..");
 const OUT = path.join(ROOT, "content", "catalog.json");
 const UPDATED = "2026-07-04";
 const FLAGSHIP_DIR = path.join(ROOT, "content", "flagship");
+const AFFILIATE_PATH = path.join(ROOT, "content", "affiliate-links.json");
+
+function loadAffiliateLinks() {
+  if (!fs.existsSync(AFFILIATE_PATH)) return {};
+  return JSON.parse(fs.readFileSync(AFFILIATE_PATH, "utf8"));
+}
+
+function resolveEntryUrls(entry, affiliateLinks) {
+  if (entry.ctaUrl) {
+    return {
+      ...entry,
+      isAffiliate: Boolean(entry.isAffiliate || entry.affiliateNetwork),
+      affiliateNetwork: entry.affiliateNetwork || "",
+    };
+  }
+  const aff = affiliateLinks[entry.slug];
+  if (aff?.url) {
+    return {
+      ...entry,
+      ctaUrl: aff.url,
+      affiliateNetwork: aff.network || "",
+      isAffiliate: true,
+    };
+  }
+  return { ...entry, isAffiliate: false, affiliateNetwork: "" };
+}
+
+function applyAffiliateLinks(category, affiliateLinks) {
+  if (!category.entries?.length) return category;
+  return {
+    ...category,
+    entries: category.entries.map((e) => resolveEntryUrls(e, affiliateLinks)),
+  };
+}
 
 function loadFlagshipGuides() {
   if (!fs.existsSync(FLAGSHIP_DIR)) return [];
@@ -72,9 +106,14 @@ function buildGuide(def) {
         summary: r.tagline,
         website: r.url,
         bestFor: r.tagline,
+        ctaUrl: r.ctaUrl,
       })
     );
   });
+  return buildGuideFromEntries(def, entries);
+}
+
+function buildGuideFromEntries(def, entries) {
   return {
     sortOrder: def.sortOrder,
     slug: def.slug,
@@ -192,5 +231,8 @@ const categories = [
   ...flagshipGuides.filter((g) => g.slug !== "best-managed-seo-services"),
 ].sort((a, b) => a.sortOrder - b.sortOrder);
 
-fs.writeFileSync(OUT, JSON.stringify({ categories }, null, 2));
-console.log(`Wrote ${categories.length} categories → ${OUT}`);
+const affiliateLinks = loadAffiliateLinks();
+const withAffiliate = categories.map((c) => applyAffiliateLinks(c, affiliateLinks));
+
+fs.writeFileSync(OUT, JSON.stringify({ categories: withAffiliate }, null, 2));
+console.log(`Wrote ${withAffiliate.length} categories → ${OUT}`);

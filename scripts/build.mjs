@@ -15,6 +15,13 @@ const site = JSON.parse(fs.readFileSync(path.join(CONTENT, "site.json"), "utf8")
 const catalog = JSON.parse(fs.readFileSync(path.join(CONTENT, "catalog.json"), "utf8"));
 const categories = catalog.categories;
 
+const sponsoredSlotsPath = path.join(CONTENT, "sponsored-slots.json");
+const sponsoredSlots = fs.existsSync(sponsoredSlotsPath)
+  ? JSON.parse(fs.readFileSync(sponsoredSlotsPath, "utf8"))
+  : [];
+
+const LEGAL_DIR = path.join(CONTENT, "legal");
+
 function escapeHtml(s) {
   return String(s ?? "")
     .replace(/&/g, "&amp;")
@@ -24,8 +31,133 @@ function escapeHtml(s) {
 }
 
 function outboundHref(entry, category) {
-  const url = entry.ctaUrl || entry.website;
   return `/go/${category.slug}/${entry.slug}`;
+}
+
+function outboundLinkAttrs(entry, category) {
+  const affiliate = entry.isAffiliate ? ' data-affiliate="true"' : "";
+  const network = entry.affiliateNetwork
+    ? ` data-affiliate-network="${escapeHtml(entry.affiliateNetwork)}"`
+    : "";
+  return `class="outbound" data-category="${escapeHtml(category.slug)}" data-vendor="${escapeHtml(entry.slug)}"${affiliate}${network} rel="noopener noreferrer sponsored"`;
+}
+
+function renderHead({ title, description, canonical, categorySlug, pageSlug }) {
+  const ga4 = site.ga4Id
+    ? `
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHtml(site.ga4Id)}"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.GA4_ID="${escapeHtml(site.ga4Id)}";gtag("js",new Date());gtag("config","${escapeHtml(site.ga4Id)}");</script>`
+    : "";
+  const categoryMeta = categorySlug
+    ? `\n  <meta name="toptechreviews:category" content="${escapeHtml(categorySlug)}">`
+    : "";
+  const canonicalTag = canonical ? `\n  <link rel="canonical" href="${escapeHtml(canonical)}">` : "";
+  const ads = site.ads || {};
+  const adsMeta = ads.enabled
+    ? `\n  <meta name="toptechreviews:ads" content="enabled">
+  <meta name="toptechreviews:ads-provider" content="${escapeHtml(ads.provider || "adsense")}">
+  <meta name="toptechreviews:adsense-client" content="${escapeHtml(ads.adsenseClient || "")}">
+  <meta name="toptechreviews:carbon-serve" content="${escapeHtml(ads.carbonServe || "")}">
+  <meta name="toptechreviews:carbon-placement" content="${escapeHtml(ads.carbonPlacement || "")}">
+  <meta name="toptechreviews:ads-require-consent" content="${ads.requireConsent !== false ? "true" : "false"}">`
+    : "";
+  const consentScript =
+    ads.enabled || site.ga4Id ? `\n  <script defer src="/assets/consent.js"></script>` : "";
+  const adsScript = ads.enabled ? `\n  <script defer src="/assets/ads.js"></script>` : "";
+  const pageSlugMeta = pageSlug
+    ? `\n  <meta name="toptechreviews:page-slug" content="${escapeHtml(pageSlug)}">`
+    : "";
+
+  return `<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  ${canonicalTag}
+  <link rel="stylesheet" href="/assets/styles.css">
+  <meta name="toptechreviews:tracking" content="${escapeHtml(site.trackingEndpoint || "/api/click")}">${categoryMeta}${pageSlugMeta}${adsMeta}
+  ${ga4}
+  <script defer src="/assets/tracker.js"></script>${consentScript}${adsScript}
+</head>`;
+}
+
+function adsEnabledForSlug(slug) {
+  const ads = site.ads || {};
+  if (!ads.enabled) return false;
+  if (ads.excludeSlugs?.includes(slug)) return false;
+  return true;
+}
+
+function renderAdSlot(slotName, pageSlug) {
+  const ads = site.ads || {};
+  if (!adsEnabledForSlug(pageSlug) || !ads.slots?.[slotName]) return "";
+  if (ads.provider === "custom" && ads.customHtml) {
+    return `<aside class="ad-slot ad-slot-custom" data-ad-slot="${escapeHtml(slotName)}" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <div class="ad-unit">${ads.customHtml}</div>
+</aside>`;
+  }
+  return `<aside class="ad-slot" data-ad-slot="${escapeHtml(slotName)}" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <div class="ad-unit" id="ad-${escapeHtml(slotName)}"></div>
+</aside>`;
+}
+
+function getActiveSponsor(slug) {
+  const today = new Date().toISOString().slice(0, 10);
+  return sponsoredSlots.find((s) => s.slug === slug && (!s.expires || s.expires >= today));
+}
+
+function renderSponsoredBanner(cat) {
+  const sponsor = getActiveSponsor(cat.slug);
+  if (!sponsor) return "";
+  return `<aside class="sponsored-banner">
+  <p class="sponsored-label">${escapeHtml(sponsor.label || "Sponsored")}</p>
+  <p><a href="${escapeHtml(sponsor.sponsorUrl)}" class="outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="sponsored-placement" rel="noopener sponsored">${escapeHtml(sponsor.sponsorName)}</a></p>
+  <p class="sponsored-note">Paid placement — does not affect our rankings.</p>
+</aside>`;
+}
+
+function footerLegalLinks() {
+  return `<a href="/privacy/">Privacy</a><a href="/affiliate-disclosure/">Affiliate Disclosure</a>`;
+}
+
+function renderLegalPage(doc) {
+  const canonical = `${site.url}/${doc.slug}/`;
+  const sections = (doc.sections || [])
+    .map(
+      (s) => `<section class="legal-section">
+      <h2>${escapeHtml(s.heading)}</h2>
+      <p>${escapeHtml(s.body)}</p>
+    </section>`
+    )
+    .join("\n");
+
+  return `<!DOCTYPE html>
+<html lang="en">
+${renderHead({
+  title: doc.title,
+  description: `${doc.h1} — ${site.name}`,
+  canonical,
+  pageSlug: doc.slug,
+})}
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div><a href="/" class="logo">${escapeHtml(site.name)}</a><p class="tagline">${escapeHtml(site.tagline)}</p></div>
+      <nav><a href="/">All guides</a></nav>
+    </div>
+  </header>
+  <main class="container legal-page">
+    <article class="hero">
+      <h1>${escapeHtml(doc.h1)}</h1>
+      <p class="byline">Last updated ${escapeHtml(doc.updated || "")}</p>
+    </article>
+    ${sections}
+  </main>
+  ${renderFooter(footerLegalLinks())}
+</body>
+</html>`;
 }
 
 function inquiryAttrs(categorySlug) {
@@ -62,6 +194,7 @@ function renderFooter(extraLinks = "") {
   const inquiryLink = site.inquiryUrl
     ? `<a href="${escapeHtml(site.inquiryUrl)}" class="outbound" data-category="site" data-vendor="editorial-inquiry" rel="noopener">${escapeHtml(site.inquiryLabel || "Submit inquiry")}</a>`
     : "";
+  const legal = footerLegalLinks();
   return `<footer class="site-footer">
     <div class="footer-inner">
       <div>
@@ -69,6 +202,7 @@ function renderFooter(extraLinks = "") {
         <p>${escapeHtml(site.tagline)}</p>
       </div>
       <div class="footer-links">
+        ${legal}
         ${extraLinks}
         ${inquiryLink}
       </div>
@@ -97,7 +231,7 @@ function renderComparisonPage(cat) {
     .map(
       (e) => `<li class="provider-row${e.editorChoice ? " winner-row" : ""}">
       <div><strong>${escapeHtml(e.name)}</strong>${e.editorChoice ? ' <span class="badge">Best overall</span>' : ""}</div>
-      <a href="${outboundHref(e, cat)}" class="outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(e.slug)}" rel="noopener noreferrer sponsored">Visit →</a>
+      <a href="${outboundHref(e, cat)}" ${outboundLinkAttrs(e, cat)}>Visit →</a>
     </li>`
     )
     .join("\n");
@@ -110,7 +244,7 @@ function renderComparisonPage(cat) {
       <td>${escapeHtml(e.typeLabel || e.type)}</td>
       <td>${escapeHtml(e.pricingLabel)}</td>
       <td><strong>${e.scores.overall.toFixed(1)}</strong></td>
-      <td><a href="${outboundHref(e, cat)}" class="outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(e.slug)}" rel="noopener noreferrer sponsored">Visit →</a></td>
+      <td><a href="${outboundHref(e, cat)}" ${outboundLinkAttrs(e, cat)}>Visit →</a></td>
     </tr>`
     )
     .join("\n");
@@ -141,7 +275,7 @@ function renderComparisonPage(cat) {
         <div><h4>Cons</h4><ul>${(e.cons || []).map((c) => `<li>${escapeHtml(c)}</li>`).join("")}</ul></div>
       </div>
       <p><strong>Best for:</strong> ${escapeHtml(e.bestFor)}</p>
-      <a href="${outboundHref(e, cat)}" class="btn${e.editorChoice ? " btn-primary" : " btn-secondary"} outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(e.slug)}" rel="noopener noreferrer sponsored">${e.editorChoice ? "See pricing & plans →" : `Visit ${escapeHtml(e.name.split(" ")[0])} →`}</a>
+      <a href="${outboundHref(e, cat)}" class="btn${e.editorChoice ? " btn-primary" : " btn-secondary"} outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(e.slug)}"${e.isAffiliate ? ' data-affiliate="true"' : ""}${e.affiliateNetwork ? ` data-affiliate-network="${escapeHtml(e.affiliateNetwork)}"` : ""} rel="noopener noreferrer sponsored">${e.editorChoice ? "See pricing & plans →" : `Visit ${escapeHtml(e.name.split(" ")[0])} →`}</a>
     </article>`
     )
     .join("\n");
@@ -162,17 +296,13 @@ function renderComparisonPage(cat) {
 
   return `<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(cat.title)} | ${escapeHtml(site.name)}</title>
-  <meta name="description" content="${escapeHtml(cat.metaDescription || cat.intro.slice(0, 155))}">
-  <link rel="canonical" href="${canonical}">
-  <link rel="stylesheet" href="/assets/styles.css">
-  <meta name="toptechreviews:tracking" content="${escapeHtml(site.trackingEndpoint || "/api/click")}">
-  <script defer src="/assets/tracker.js"></script>
-  <meta name="toptechreviews:category" content="${escapeHtml(cat.slug)}">
-</head>
+${renderHead({
+  title: `${cat.title} | ${site.name}`,
+  description: cat.metaDescription || cat.intro.slice(0, 155),
+  canonical,
+  categorySlug: cat.slug,
+  pageSlug: cat.slug,
+})}
 <body>
   <header class="site-header">
     <div class="masthead-bar">Updated ${escapeHtml(cat.updated)} · ${sorted.length} providers · <a href="#methodology">Methodology</a></div>
@@ -186,9 +316,12 @@ function renderComparisonPage(cat) {
       <p class="eyebrow">2026 Buyer&apos;s Guide</p>
       <h1>${escapeHtml(cat.h1)}</h1>
       <p class="lead">${escapeHtml(cat.intro)}</p>
-      <p class="byline">By ${escapeHtml(site.publisher)} · Independent testing · Affiliate links may appear below</p>
+      <p class="byline">By ${escapeHtml(site.publisher)} · Independent testing · Outbound links may include affiliates (<a href="/affiliate-disclosure/">disclosure</a>)</p>
       ${ourReview}
     </article>
+
+    ${renderAdSlot("reviewAfterHero", cat.slug)}
+    ${renderSponsoredBanner(cat)}
 
     <section class="winner-box">
       <div class="winner-banner">Our top pick</div>
@@ -198,7 +331,7 @@ function renderComparisonPage(cat) {
         <p class="tagline">${escapeHtml(winner.tagline)}</p>
         <p>${escapeHtml(winner.summary)}</p>
         <p class="price">${escapeHtml(winner.pricingLabel)}</p>
-        <a href="${outboundHref(winner, cat)}" class="btn btn-primary outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(winner.slug)}" rel="noopener noreferrer sponsored">See pricing &amp; plans →</a>
+        <a href="${outboundHref(winner, cat)}" class="btn btn-primary outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(winner.slug)}"${winner.isAffiliate ? ' data-affiliate="true"' : ""}${winner.affiliateNetwork ? ` data-affiliate-network="${escapeHtml(winner.affiliateNetwork)}"` : ""} rel="noopener noreferrer sponsored">See pricing &amp; plans →</a>
       </div>
     </section>
 
@@ -211,6 +344,8 @@ function renderComparisonPage(cat) {
         <tbody>${tableRows}</tbody>
       </table></div>
     </section>
+
+    ${renderAdSlot("reviewMidContent", cat.slug)}
 
     <section><h2>Score breakdown — top 4</h2><div class="score-grid">${scoreBreakdown}</div></section>
 
@@ -225,7 +360,8 @@ function renderComparisonPage(cat) {
     <section class="verdict">
       <h2>The verdict</h2>
       <p>${escapeHtml(cat.verdict || `For most buyers in this category, ${winner.name} offers the best balance of features, value, and ease of use.`)}</p>
-      <a href="${outboundHref(winner, cat)}" class="btn btn-primary outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(winner.slug)}" rel="noopener noreferrer sponsored">Visit our #1 pick →</a>
+      ${renderAdSlot("reviewBeforeVerdict", cat.slug)}
+      <a href="${outboundHref(winner, cat)}" class="btn btn-primary outbound" data-category="${escapeHtml(cat.slug)}" data-vendor="${escapeHtml(winner.slug)}"${winner.isAffiliate ? ' data-affiliate="true"' : ""}${winner.affiliateNetwork ? ` data-affiliate-network="${escapeHtml(winner.affiliateNetwork)}"` : ""} rel="noopener noreferrer sponsored">Visit our #1 pick →</a>
     </section>
 
     ${renderInquirySection(cat.slug)}
@@ -303,15 +439,12 @@ function renderIndex(categories) {
 
   return `<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(site.name)} — Independent tech buyer guides</title>
-  <meta name="description" content="${escapeHtml(site.description)}">
-  <link rel="stylesheet" href="/assets/styles.css">
-  <meta name="toptechreviews:tracking" content="${escapeHtml(site.trackingEndpoint || "/api/click")}">
-  <script defer src="/assets/tracker.js"></script>
-</head>
+${renderHead({
+  title: site.seoTitle || `${site.name} — Independent tech buyer guides`,
+  description: site.description,
+  canonical: `${site.url}/`,
+  pageSlug: "home",
+})}
 <body>
   <header class="site-header site-header-home">
     <div class="masthead-bar">Independent research · ${categories.length} buyer guides · Updated ${escapeHtml(featured.updated)}</div>
@@ -344,6 +477,8 @@ function renderIndex(categories) {
         <input type="search" id="guide-search" class="guide-search" placeholder="Search guides (e.g. CRM, VPN, payroll)…" autocomplete="off">
       </div>
     </section>
+
+    ${renderAdSlot("homeAfterStats", "home")}
 
     <nav class="cat-nav" id="categories" aria-label="Guide categories">
       ${navPills}
@@ -430,8 +565,15 @@ function renderGoPage() {
 
 function renderSitemap(categories) {
   const base = site.url.replace(/\/$/, "");
+  const legalUrls = fs.existsSync(LEGAL_DIR)
+    ? fs
+        .readdirSync(LEGAL_DIR)
+        .filter((f) => f.endsWith(".json"))
+        .map((f) => `${base}/${JSON.parse(fs.readFileSync(path.join(LEGAL_DIR, f), "utf8")).slug}/`)
+    : [];
   const urls = [
     { loc: `${base}/`, priority: "1.0" },
+    ...legalUrls.map((loc) => ({ loc, priority: "0.3" })),
     ...categories.map((c) => ({
       loc: `${base}/reviews/${c.slug}/`,
       priority: c.slug === "best-managed-seo-services" ? "0.9" : "0.8",
@@ -476,10 +618,25 @@ fs.writeFileSync(path.join(DIST, "index.html"), renderIndex(categories));
 fs.copyFileSync(path.join(ASSETS, "styles.css"), path.join(DIST, "assets", "styles.css"));
 fs.copyFileSync(path.join(ASSETS, "tracker.js"), path.join(DIST, "assets", "tracker.js"));
 fs.copyFileSync(path.join(ASSETS, "go.js"), path.join(DIST, "assets", "go.js"));
+if (fs.existsSync(path.join(ASSETS, "ads.js"))) {
+  fs.copyFileSync(path.join(ASSETS, "ads.js"), path.join(DIST, "assets", "ads.js"));
+}
+if (fs.existsSync(path.join(ASSETS, "consent.js"))) {
+  fs.copyFileSync(path.join(ASSETS, "consent.js"), path.join(DIST, "assets", "consent.js"));
+}
 fs.writeFileSync(path.join(DIST, "_redirects"), renderGoRedirect(categories));
 fs.writeFileSync(path.join(DIST, "sitemap.xml"), renderSitemap(categories));
 fs.writeFileSync(path.join(DIST, "robots.txt"), renderRobotsTxt());
 fs.mkdirSync(path.join(DIST, "go"), { recursive: true });
 fs.writeFileSync(path.join(DIST, "go", "index.html"), renderGoPage());
+
+if (fs.existsSync(LEGAL_DIR)) {
+  for (const file of fs.readdirSync(LEGAL_DIR).filter((f) => f.endsWith(".json"))) {
+    const doc = JSON.parse(fs.readFileSync(path.join(LEGAL_DIR, file), "utf8"));
+    const dir = path.join(DIST, doc.slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), renderLegalPage(doc));
+  }
+}
 
 console.log(`Built ${categories.length} guides → ${DIST}`);

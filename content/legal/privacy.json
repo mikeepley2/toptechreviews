@@ -1,0 +1,32 @@
+{
+  "slug": "privacy",
+  "title": "Privacy Policy | TopTechReviews.org",
+  "h1": "Privacy Policy",
+  "updated": "2026-07-06",
+  "sections": [
+    {
+      "heading": "Overview",
+      "body": "TopTechReviews.org (\"we\", \"us\") publishes independent technology buyer guides at toptechreviews.org. This policy explains what information we collect and how we use it."
+    },
+    {
+      "heading": "Information we collect",
+      "body": "When you visit our site, we may collect: pages viewed and referral source (via analytics tools such as Google Analytics, if enabled); click events when you follow outbound links to vendor sites (category, vendor name, destination URL, page path, timestamp); and technical data such as browser type and IP address stored with click logs on our hosting provider (Cloudflare)."
+    },
+    {
+      "heading": "How we use information",
+      "body": "We use this data to measure guide performance, improve editorial content, forward marketing click events to partner systems where configured, and maintain site security. We do not sell personal information."
+    },
+    {
+      "heading": "Cookies and advertising",
+      "body": "We may use cookies for analytics and, if enabled, display advertising (e.g. Google AdSense or Carbon Ads). Third-party ad partners may use cookies to serve relevant ads. You can manage cookie preferences via our consent banner or your browser settings."
+    },
+    {
+      "heading": "Third-party links",
+      "body": "Our guides link to external vendor websites. Those sites have their own privacy policies. Some outbound links are affiliate links — see our Affiliate Disclosure."
+    },
+    {
+      "heading": "Contact",
+      "body": "Questions about this policy may be submitted via the Submit inquiry link on our homepage."
+    }
+  ]
+}

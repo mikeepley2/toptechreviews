@@ -91,6 +91,18 @@ Worker stores in D1 and forwards to ReferIQ `POST /api/public/marketing-clicks` 
 
 Deploy `workers/click-tracker.js` as a Cloudflare Worker route on `toptechreviews.org/api/click`. See `docs/SECRETS.md`.
 
+## ReferIQ Managed SEO (automated write-back)
+
+Connect TopTechReviews in **ReferIQ → Managed SEO** with CMS **Static site (GitHub JSON)**:
+
+- Repo: `mikeepley2/toptechreviews`, branch `main`
+- GitHub PAT: contents read/write
+- Autonomy: **full_auto**
+
+ReferIQ crawls live pages, scores them, commits title/meta/h1 updates to `content/flagship/*.json` and guide JSON files, then GitHub Actions (`deploy.yml`) rebuilds and publishes Pages.
+
+See `vantyxreferrals/docs/product/managed-seo.md` § Static sites.
+
 ## Deploy
 
 Cloudflare Pages: build `npm run seed && npm run build`, publish `dist/`. See `docs/DEPLOY.md`.

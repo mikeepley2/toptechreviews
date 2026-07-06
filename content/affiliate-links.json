@@ -1,0 +1,22 @@
+{
+  "hubspot": { "url": "", "network": "impact", "notes": "Replace url after HubSpot/Impact partner approval" },
+  "salesforce": { "url": "", "network": "impact", "notes": "Salesforce partner program" },
+  "pipedrive": { "url": "", "network": "partnerstack", "notes": "Pipedrive affiliate" },
+  "klaviyo": { "url": "", "network": "direct", "notes": "Klaviyo partner program" },
+  "mailchimp": { "url": "", "network": "direct", "notes": "Mailchimp affiliate" },
+  "asana": { "url": "", "network": "impact", "notes": "Asana partner" },
+  "monday": { "url": "", "network": "direct", "notes": "Monday.com affiliate" },
+  "digitalocean": { "url": "", "network": "impact", "notes": "DigitalOcean referral" },
+  "shopify": { "url": "", "network": "impact", "notes": "Shopify affiliate" },
+  "1password": { "url": "", "network": "impact", "notes": "1Password affiliate" },
+  "bitwarden": { "url": "", "network": "direct", "notes": "Bitwarden affiliate" },
+  "nordvpn": { "url": "", "network": "impact", "notes": "NordVPN affiliate" },
+  "zoom": { "url": "", "network": "direct", "notes": "Zoom affiliate" },
+  "quickbooks": { "url": "", "network": "intuit", "notes": "QuickBooks affiliate" },
+  "freshbooks": { "url": "", "network": "impact", "notes": "FreshBooks affiliate" },
+  "gusto": { "url": "", "network": "direct", "notes": "Gusto partner" },
+  "figma": { "url": "", "network": "impact", "notes": "Figma affiliate" },
+  "stripe": { "url": "", "network": "direct", "notes": "Stripe partner (referral)" },
+  "webflow": { "url": "", "network": "impact", "notes": "Webflow affiliate" },
+  "squarespace": { "url": "", "network": "impact", "notes": "Squarespace affiliate" }
+}

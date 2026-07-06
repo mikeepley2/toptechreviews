@@ -34,13 +34,14 @@ export async function handleClickRequest(request, env) {
     path: payload.path || "",
     referrer: payload.referrer || "",
     ts: payload.ts || receivedAt,
+    affiliateNetwork: payload.affiliateNetwork || "",
   };
 
   if (env.CLICKS) {
     try {
       await env.CLICKS.prepare(
-        `INSERT INTO clicks (site, category, vendor, destination, type, path, referrer, user_agent, ip, received_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO clicks (site, category, vendor, destination, type, path, referrer, user_agent, ip, affiliate_network, received_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
         .bind(
           record.site,
@@ -52,6 +53,7 @@ export async function handleClickRequest(request, env) {
           record.referrer,
           ua,
           ip,
+          record.affiliateNetwork,
           receivedAt,
         )
         .run();

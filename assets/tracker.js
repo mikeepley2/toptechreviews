@@ -1,7 +1,7 @@
 /**
  * Outbound click tracking for TopTechReviews.org
  * - Sends beacon to TRACKING_ENDPOINT (Cloudflare Worker / ReferIQ analytics)
- * - Optional GA4 event when window.GA4_ID is set
+ * - Optional GA4 events when window.gtag is available
  */
 (function () {
   const siteMeta = document.querySelector('meta[name="toptechreviews:category"]');
@@ -29,10 +29,12 @@
     }
 
     if (window.GA4_ID && typeof window.gtag === "function") {
-      window.gtag("event", "outbound_click", {
+      var eventName = payload.vendor === "editorial-inquiry" ? "editorial_inquiry_click" : "outbound_click";
+      window.gtag("event", eventName, {
         category: payload.category,
         vendor: payload.vendor,
         destination: payload.destination,
+        affiliate: payload.affiliate || false,
       });
     }
   }
@@ -43,6 +45,13 @@
     const category = a.dataset.category || categoryFromMeta || "";
     const vendor = a.dataset.vendor || "";
     const href = a.getAttribute("href") || "";
-    trackClick({ category, vendor, destination: href, type: "outbound" });
+    trackClick({
+      category: category,
+      vendor: vendor,
+      destination: href,
+      type: "outbound",
+      affiliate: a.dataset.affiliate === "true",
+      affiliateNetwork: a.dataset.affiliateNetwork || "",
+    });
   });
 })();
