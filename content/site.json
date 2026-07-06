@@ -12,7 +12,7 @@
   "inquiryText": "Vendors can request consideration for future guide updates. Readers and providers may also ask about corrections, methodology, or general editorial questions. Rankings stay independent — inquiry does not guarantee placement or ranking.",
   "trackingEndpoint": "/api/click",
   "referiqMarketingClickUrl": "https://referiq.net/api/public/marketing-clicks",
-  "ga4Id": "",
+  "ga4Id": "G-GHHQWHCN99",
   "ads": {
     "enabled": true,
     "provider": "adsense",
