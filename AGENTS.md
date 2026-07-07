@@ -105,7 +105,9 @@ See `vantyxreferrals/docs/product/managed-seo.md` § Static sites.
 
 ## Deploy
 
-Cloudflare Pages: build `npm run seed && npm run build`, publish `dist/`. See `docs/DEPLOY.md`.
+**Cloudflare Pages** (current): `npm run seed && npm run build` → `dist/`. See [docs/DEPLOY.md](docs/DEPLOY.md).
+
+**AWS S3 + CloudFront** (optional): CloudFormation in `infra/aws/`, deploy via [docs/DEPLOY_AWS.md](docs/DEPLOY_AWS.md). Build emits S3-compatible `/go/.../index.html` redirect pages.
 
 ## Do not
 

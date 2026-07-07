@@ -561,11 +561,31 @@ function renderGoRedirect(categories) {
   const lines = ["/* Cloudflare Pages _redirects — optional; prefer Worker for click logging */"];
   for (const cat of categories) {
     for (const e of cat.entries) {
-      const dest = encodeURIComponent(e.ctaUrl || e.website);
       lines.push(`/go/${cat.slug}/${e.slug}  ${e.ctaUrl || e.website}  302`);
     }
   }
   return lines.join("\n");
+}
+
+function buildOutboundMap(categories) {
+  const map = {};
+  for (const cat of categories) {
+    for (const e of cat.entries) {
+      map[`${cat.slug}/${e.slug}`] = e.ctaUrl || e.website;
+    }
+  }
+  return map;
+}
+
+function renderGoVendorPage(dest) {
+  const url = escapeHtml(dest);
+  return `<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="refresh" content="0;url=${url}">
+  <title>Redirecting…</title>
+  <script>location.replace(${JSON.stringify(dest)});</script>
+</head><body><p>Redirecting…</p></body></html>`;
 }
 
 function renderGoPage() {
@@ -636,10 +656,18 @@ if (fs.existsSync(path.join(ASSETS, "consent.js"))) {
   fs.copyFileSync(path.join(ASSETS, "consent.js"), path.join(DIST, "assets", "consent.js"));
 }
 fs.writeFileSync(path.join(DIST, "_redirects"), renderGoRedirect(categories));
+fs.writeFileSync(path.join(DIST, "outbound-map.json"), JSON.stringify(buildOutboundMap(categories)));
 fs.writeFileSync(path.join(DIST, "sitemap.xml"), renderSitemap(categories));
 fs.writeFileSync(path.join(DIST, "robots.txt"), renderRobotsTxt());
 fs.mkdirSync(path.join(DIST, "go"), { recursive: true });
 fs.writeFileSync(path.join(DIST, "go", "index.html"), renderGoPage());
+for (const cat of categories) {
+  for (const e of cat.entries) {
+    const goDir = path.join(DIST, "go", cat.slug, e.slug);
+    fs.mkdirSync(goDir, { recursive: true });
+    fs.writeFileSync(path.join(goDir, "index.html"), renderGoVendorPage(e.ctaUrl || e.website));
+  }
+}
 
 if (fs.existsSync(LEGAL_DIR)) {
   for (const file of fs.readdirSync(LEGAL_DIR).filter((f) => f.endsWith(".json"))) {

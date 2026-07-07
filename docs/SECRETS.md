@@ -20,6 +20,24 @@ Configure in **Settings → Secrets and variables → Actions** for `mikeepley2/
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
 | `MARKETING_CLICK_API_KEY` | Shared key with ReferIQ `MARKETING_CLICK_API_KEY` (Worker → `/api/public/marketing-clicks`) |
 
+## AWS (S3 + CloudFront) — optional cutover
+
+See [DEPLOY_AWS.md](DEPLOY_AWS.md). GitHub **variables** (not secrets):
+
+| Variable | Purpose |
+|----------|---------|
+| `AWS_DEPLOY_ENABLED` | Set `true` to run `.github/workflows/deploy-aws.yml` on push |
+| `AWS_SITE_BUCKET` | S3 bucket from CloudFormation stack |
+| `AWS_CLOUDFRONT_DISTRIBUTION_ID` | CloudFront distribution ID |
+
+GitHub **secret**:
+
+| Secret | Purpose |
+|--------|---------|
+| `AWS_DEPLOY_ROLE_ARN` | IAM role for OIDC (`configure-aws-credentials`) |
+
+One-time stack: `ACM_CERTIFICATE_ARN` + `MARKETING_CLICK_API_KEY` → `bash scripts/provision-aws.sh`
+
 ## ReferIQ (vantyxreferrals)
 
 Set the same value on ReferIQ web app:
