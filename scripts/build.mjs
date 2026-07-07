@@ -42,6 +42,17 @@ function outboundLinkAttrs(entry, category) {
   return `class="outbound" data-category="${escapeHtml(category.slug)}" data-vendor="${escapeHtml(entry.slug)}"${affiliate}${network} rel="noopener noreferrer sponsored"`;
 }
 
+function renderReferiqTracking() {
+  const rq = site.referiq;
+  if (!rq?.embedScriptUrl) return "";
+  const attrs = [`src="${escapeHtml(rq.embedScriptUrl)}"`, "async"];
+  if (rq.referralUrl) attrs.push(`data-referral-url="${escapeHtml(rq.referralUrl)}"`);
+  if (rq.callPhone) attrs.push(`data-call-phone="${escapeHtml(rq.callPhone)}"`);
+  if (rq.leadUrl) attrs.push(`data-lead-url="${escapeHtml(rq.leadUrl)}"`);
+  if (rq.ctaLabel) attrs.push(`data-cta-label="${escapeHtml(rq.ctaLabel)}"`);
+  return `\n  <script ${attrs.join(" ")}></script>`;
+}
+
 function renderHead({ title, description, canonical, categorySlug, pageSlug }) {
   const ga4 = site.ga4Id
     ? `
@@ -77,7 +88,7 @@ function renderHead({ title, description, canonical, categorySlug, pageSlug }) {
   <link rel="stylesheet" href="/assets/styles.css">
   <meta name="toptechreviews:tracking" content="${escapeHtml(site.trackingEndpoint || "/api/click")}">${categoryMeta}${pageSlugMeta}${adsMeta}
   ${ga4}
-  <script defer src="/assets/tracker.js"></script>${consentScript}${adsScript}
+  <script defer src="/assets/tracker.js"></script>${consentScript}${adsScript}${renderReferiqTracking()}
 </head>`;
 }
 
