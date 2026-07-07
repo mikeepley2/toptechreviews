@@ -20,7 +20,9 @@
     "carbonServe": "",
     "carbonPlacement": "",
     "customHtml": "",
-    "excludeSlugs": ["best-managed-seo-services"],
+    "excludeSlugs": [
+      "best-managed-seo-services"
+    ],
     "requireConsent": true,
     "slots": {
       "homeAfterStats": true,
@@ -28,5 +30,12 @@
       "reviewMidContent": true,
       "reviewBeforeVerdict": false
     }
+  },
+  "referiq": {
+    "ctaLabel": "Get ReferIQ managed SEO",
+    "referralUrl": "https://dev.referiq.net/r/toptechreviews-referiq",
+    "leadUrl": "https://dev.referiq.net/inquire",
+    "embedScriptUrl": "https://dev.referiq.net/embed/referiq-track.js",
+    "updatedAt": "2026-07-07T15:01:33.918Z"
   }
 }
