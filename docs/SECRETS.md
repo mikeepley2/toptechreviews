@@ -36,7 +36,9 @@ GitHub **secret**:
 |--------|---------|
 | `AWS_DEPLOY_ROLE_ARN` | IAM role for OIDC (`configure-aws-credentials`) |
 
-One-time stack: `ACM_CERTIFICATE_ARN` + `MARKETING_CLICK_API_KEY` → `bash scripts/provision-aws.sh`
+One-time stack: `python scripts/provision-aws-full.py` (reads `MARKETING_CLICK_API_KEY` from vault; needs `AWS_ACCESS_KEY_ID` + `AWS_SECRET_ACCESS_KEY` in vault or env)
+
+Or manually: `ACM_CERTIFICATE_ARN` + `MARKETING_CLICK_API_KEY` → `bash scripts/provision-aws.sh`
 
 ## ReferIQ (vantyxreferrals)
 

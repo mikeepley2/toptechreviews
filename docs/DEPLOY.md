@@ -1,8 +1,10 @@
-# Deploy — Cloudflare Pages
+# Deploy — Cloudflare Pages (legacy)
+
+Production hosting moved to **AWS S3 + CloudFront** — see [DEPLOY_AWS.md](DEPLOY_AWS.md). This doc remains for DNS/email (Cloudflare) and optional Pages fallback.
 
 ## DNS
 
-Point `toptechreviews.org` (and `www`) to Cloudflare Pages after connecting the repo.
+`toptechreviews.org` and `www` CNAME to CloudFront (DNS only / grey cloud). MX/TXT for Zoho stay in Cloudflare.
 
 ## Pages project
 
@@ -23,7 +25,7 @@ No npm dependencies required for build (stdlib only).
 
 ## CI/CD
 
-Push to `main` runs `.github/workflows/deploy.yml` (Pages + Worker). Requires GitHub secrets in [SECRETS.md](SECRETS.md).
+Push to `main` runs `.github/workflows/deploy-aws.yml` when `AWS_DEPLOY_ENABLED=true`. Cloudflare Pages deploy (`.github/workflows/deploy.yml`) is skipped in that case.
 
 ## Local preview
 

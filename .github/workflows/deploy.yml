@@ -8,6 +8,7 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
+    if: vars.AWS_DEPLOY_ENABLED != 'true'
     permissions:
       contents: read
       deployments: write

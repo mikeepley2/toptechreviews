@@ -105,9 +105,9 @@ See `vantyxreferrals/docs/product/managed-seo.md` § Static sites.
 
 ## Deploy
 
-**Cloudflare Pages** (current): `npm run seed && npm run build` → `dist/`. See [docs/DEPLOY.md](docs/DEPLOY.md).
+**AWS S3 + CloudFront** (production): `npm run seed && npm run build` → sync to S3. See [docs/DEPLOY_AWS.md](docs/DEPLOY_AWS.md). One-time: `python scripts/provision-aws-full.py`. Ongoing: push to `main` (`.github/workflows/deploy-aws.yml`).
 
-**AWS S3 + CloudFront** (optional): CloudFormation in `infra/aws/`, deploy via [docs/DEPLOY_AWS.md](docs/DEPLOY_AWS.md). Build emits S3-compatible `/go/.../index.html` redirect pages.
+**Cloudflare Pages** (legacy fallback): disabled when `AWS_DEPLOY_ENABLED=true`. See [docs/DEPLOY.md](docs/DEPLOY.md).
 
 ## Do not
 

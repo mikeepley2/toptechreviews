@@ -25,7 +25,29 @@ Build output includes **both** Cloudflare `_redirects` and S3-compatible `/go/..
 
 ## One-time setup
 
-### 1. ACM certificate (us-east-1)
+### Quick path (recommended)
+
+Add IAM keys to `kv/toptechreviews/platform` (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`) or export them, then:
+
+```bash
+python scripts/provision-aws-full.py
+```
+
+This script:
+
+1. Requests ACM cert in **us-east-1** (or reuses an existing one)
+2. Adds ACM DNS validation CNAMEs in Cloudflare
+3. Waits for certificate issuance
+4. Deploys the CloudFormation stack (S3 + CloudFront + Lambda)
+5. Builds and syncs `dist/` to S3
+6. Deploys GitHub OIDC role + sets GitHub Actions vars/secrets
+7. Cuts DNS `@` + `www` to CloudFront (grey cloud)
+
+Use `--skip-dns` to provision AWS without cutting over from Cloudflare Pages yet.
+
+### Manual steps
+
+#### 1. ACM certificate (us-east-1)
 
 Request a public cert in **N. Virginia** for:
 

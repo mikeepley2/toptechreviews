@@ -72,7 +72,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       FunctionName: toptechreviews-click
-      Runtime: nodejs20.x
+      Runtime: nodejs24.x
       Handler: index.handler
       Role: !GetAtt ClickLambdaRole.Arn
       Timeout: 10
@@ -129,7 +129,6 @@ Resources:
           - "*"
         AllowMethods:
           - POST
-          - OPTIONS
         AllowHeaders:
           - Content-Type
 
@@ -140,6 +139,14 @@ Resources:
       Action: lambda:InvokeFunctionUrl
       Principal: "*"
       FunctionUrlAuthType: NONE
+
+  ClickLambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ClickLambda
+      Action: lambda:InvokeFunction
+      Principal: "*"
+      InvokedViaFunctionUrl: true
 
   PrettyUrlsFunction:
     Type: AWS::CloudFront::Function
