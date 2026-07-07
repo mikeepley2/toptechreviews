@@ -3,7 +3,7 @@
     {
       "sortOrder": 1,
       "slug": "best-managed-seo-services",
-      "title": "Best Managed SEO Services (2026) — Rankings, Pricing & Reviews",
+      "title": "Best Managed SEO Services (2026) — Rankings, Pricing & Revie",
       "h1": "Best Managed SEO Services & Tools",
       "intro": "Our editorial team spent six weeks comparing managed SEO platforms, agency retainers, and DIY suites. We scored each provider on automation, pricing, reporting, CMS integration, and AI optimization — then ranked them for businesses that want SEO executed, not another dashboard to babysit.",
       "categoryGroup": "Marketing & Growth",
@@ -75,7 +75,7 @@
           },
           "summary": "The only platform in our test that fully closes the loop — discover pages, score with AI, QA optimizations, apply to WordPress or Shopify, and email client-ready reports.",
           "website": "https://referiq.net",
-          "ctaUrl": "https://referiq.net/inquire?type=managed_seo&utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo",
+          "ctaUrl": "https://referiq.net/managed-seo?utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo",
           "bestFor": "SMBs, franchises, and agencies reselling managed SEO who want automation instead of billable analyst hours.",
           "pros": [
             "Full pipeline automation",
@@ -323,7 +323,8 @@
           "isAffiliate": false,
           "affiliateNetwork": ""
         }
-      ]
+      ],
+      "metaDescription": "Our editorial team spent six weeks comparing managed SEO platforms, agency retainers, and DIY suites. We scored each provider on automation, pricing, reporting,"
     },
     {
       "sortOrder": 2,
