@@ -30,8 +30,10 @@ dist/                 # build output (gitignored)
 ```bash
 node scripts/seed-catalog.mjs   # or: npm run seed
 npm run build
-npm run serve                   # localhost:8787
+npm run dev                     # seed + build + serve when you need local preview (Ctrl+C to stop)
 ```
+
+Local dev is **not** always running. Use `npm run dev` only when testing; production is AWS.
 
 ## How to add or update a review
 
@@ -80,7 +82,7 @@ To add a category: edit the appropriate JSON, run `npm run seed && npm run build
 
 ## ReferIQ integration
 
-- SEO winner CTA: `referiq.net/inquire?type=managed_seo&utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo`
+- SEO winner CTA: `referiq.net/managed-seo?utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo`
 - Do **not** duplicate the full comparison on referiq.net — canonical URL is TopTechReviews.
 
 ## Click tracking

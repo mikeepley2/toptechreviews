@@ -165,7 +165,7 @@ const seoGuide =
     price: 299,
     url: "https://referiq.net",
     ctaUrl:
-      "https://referiq.net/inquire?type=managed_seo&utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo",
+      "https://referiq.net/managed-seo?utm_source=toptechreviews&utm_medium=comparison&utm_campaign=best-managed-seo",
     summary:
       "The only platform in our test that fully closes the loop from crawl to CMS apply and client reporting.",
     scores: { c1: 9.8, c2: 9.5, c3: 9.2, c4: 9.6, c5: 9.4, overall: 9.5 },

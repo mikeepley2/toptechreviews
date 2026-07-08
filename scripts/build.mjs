@@ -659,6 +659,17 @@ fs.writeFileSync(path.join(DIST, "_redirects"), renderGoRedirect(categories));
 fs.writeFileSync(path.join(DIST, "outbound-map.json"), JSON.stringify(buildOutboundMap(categories)));
 fs.writeFileSync(path.join(DIST, "sitemap.xml"), renderSitemap(categories));
 fs.writeFileSync(path.join(DIST, "robots.txt"), renderRobotsTxt());
+
+// IndexNow key file (optional): INDEXNOW_KEY=... or site.indexNowKey, or assets/*.txt
+const indexNowKey = (process.env.INDEXNOW_KEY || site.indexNowKey || "").trim();
+if (indexNowKey) {
+  fs.writeFileSync(path.join(DIST, `${indexNowKey}.txt`), indexNowKey);
+  console.log(`IndexNow key file: /${indexNowKey}.txt`);
+}
+for (const file of fs.readdirSync(ASSETS).filter((f) => f.endsWith(".txt"))) {
+  fs.copyFileSync(path.join(ASSETS, file), path.join(DIST, file));
+}
+
 fs.mkdirSync(path.join(DIST, "go"), { recursive: true });
 fs.writeFileSync(path.join(DIST, "go", "index.html"), renderGoPage());
 for (const cat of categories) {
